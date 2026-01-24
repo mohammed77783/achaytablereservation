@@ -37,10 +37,10 @@ class ReservationConfirmationBinding extends Bindings {
     );
 
     // Register PaymentController
-    // Get.lazyPut<PaymentController>(
-    //   () => PaymentController(
-    //     reservationRepository: Get.find<ReservationRepository>(),
-    //   ),
-    // );
+    Get.lazyPut<PaymentController>(
+      () => PaymentController(
+        reservationRepository: Get.find<ReservationRepository>(),
+      ),
+    );
   }
 }

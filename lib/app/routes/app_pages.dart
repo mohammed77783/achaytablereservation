@@ -173,14 +173,14 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 300),
       binding: ReservationConfirmationBinding(),
     ),
-    // GetPage(
-    //   name: AppRoutes.paymentpage,
-    //   // page: () => PaymentPage(totalPrice: Get.arguments,),
-    //   page: () => PaymentPage(),
-    //   transition: Transition.rightToLeft, // Optional: slide animation
-    //   transitionDuration: const Duration(milliseconds: 300),
-    //   binding: ReservationConfirmationBinding(),
-    // ),
+    GetPage(
+      name: AppRoutes.paymentpage,
+      // page: () => PaymentPage(totalPrice: Get.arguments,),
+      page: () => PaymentPage(),
+      transition: Transition.rightToLeft, // Optional: slide animation
+      transitionDuration: const Duration(milliseconds: 300),
+      binding: ReservationConfirmationBinding(),
+    ),
 
     // ==================== Booking Details ====================
     GetPage(
