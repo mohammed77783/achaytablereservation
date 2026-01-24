@@ -220,7 +220,9 @@ class MoyasarPaymentService {
           rawResponse: data,
         );
       }
-    } catch (e) {
+    } 
+    catch (e) 
+    {
       return MoyasarPaymentResult(
         success: false,
         errorMessage: 'Failed to parse response: ${e.toString()}',

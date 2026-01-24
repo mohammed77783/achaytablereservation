@@ -124,7 +124,7 @@ class PaymentPage extends StatelessWidget {
               SizedBox(height: context.spacing(24)),
 
               // Card Preview (horizontal)
-              // _buildCardPreview(controller),
+              _buildCardPreview(controller),
 
               const SizedBox(height: 32),
               // Show Apple Pay button if available (iOS only)
@@ -155,9 +155,9 @@ class PaymentPage extends StatelessWidget {
               ),
 
               SizedBox(height: context.spacing(16)),
+
               // Live Scan Button
               // _buildLiveScanButton(controller, context),
-
               SizedBox(height: context.spacing(24)),
 
               // Or divider
@@ -299,35 +299,35 @@ class PaymentPage extends StatelessWidget {
           ),
 
           // Close button
-        //   Positioned(
-        //     bottom: context.spacing(60),
-        //     left: 0,
-        //     right: 0,
-        //     child: Center(
-        //       child: GestureDetector(
-        //         onTap: controller.stopLiveScanning,
-        //         child: Container(
-        //           padding: EdgeInsets.symmetric(
-        //             horizontal: context.spacing(32),
-        //             vertical: context.spacing(16),
-        //           ),
-        //           decoration: BoxDecoration(
-        //             color: Colors.white,
-        //             borderRadius: BorderRadius.circular(30),
-        //           ),
-        //           child: Text(
-        //             'cancel'.tr,
-        //             style: TextStyle(
-        //               fontFamily: 'Cairo',
-        //               color: Colors.black,
-        //               fontSize: context.fontSize(16),
-        //               fontWeight: FontWeight.bold,
-        //             ),
-        //           ),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
+          //   Positioned(
+          //     bottom: context.spacing(60),
+          //     left: 0,
+          //     right: 0,
+          //     child: Center(
+          //       child: GestureDetector(
+          //         onTap: controller.stopLiveScanning,
+          //         child: Container(
+          //           padding: EdgeInsets.symmetric(
+          //             horizontal: context.spacing(32),
+          //             vertical: context.spacing(16),
+          //           ),
+          //           decoration: BoxDecoration(
+          //             color: Colors.white,
+          //             borderRadius: BorderRadius.circular(30),
+          //           ),
+          //           child: Text(
+          //             'cancel'.tr,
+          //             style: TextStyle(
+          //               fontFamily: 'Cairo',
+          //               color: Colors.black,
+          //               fontSize: context.fontSize(16),
+          //               fontWeight: FontWeight.bold,
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
         ],
       ),
     );
@@ -357,19 +357,19 @@ class PaymentPage extends StatelessWidget {
   }
 
   /// Card preview widget (horizontal only)
-  // Widget _buildCardPreview(PaymentController controller) {
-  //   return Obx(() {
-  //     return Center(
-  //       child: HorizontalCardWidget(
-  //         cardImage: controller.cardImage.value,
-  //         cardNumber: controller.cardNumber.value,
-  //         expirationDate: controller.expirationDate.value,
-  //         cardHolderName: controller.cardHolderName.value,
-  //         onTap: controller.pickImageFromGallery,
-  //       ),
-  //     );
-  //   });
-  // }
+  Widget _buildCardPreview(PaymentController controller) {
+    return Obx(() {
+      return Center(
+        child: HorizontalCardWidget(
+          cardImage: controller.cardImage.value,
+          cardNumber: controller.cardNumber.value,
+          expirationDate: controller.expirationDate.value,
+          cardHolderName: controller.cardHolderName.value,
+          // onTap: controller.pickImageFromGallery,
+        ),
+      );
+    });
+  }
 
   /// Live scan button
   // Widget _buildLiveScanButton(

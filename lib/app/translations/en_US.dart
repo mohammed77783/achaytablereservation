@@ -257,6 +257,10 @@ const Map<String, String> enUS = {
       'The payment deadline has passed. Your reservation may be cancelled automatically.',
   'please_check_card_details': 'Please check your card details',
   'no_booking_found': 'No booking found',
+  'express_checkout': 'Express Checkout',
+  'apple_pay_description': 'Pay quickly and securely with Apple Pay',
+  'apple_pay_unavailable': 'Apple Pay Unavailable',
+  'or': 'OR',
 
   // ==================== Reviews & Ratings ====================
   'reviews': 'Reviews',

@@ -68,7 +68,15 @@ class ApplePayButtonWidget extends StatelessWidget {
               height: context.spacing(56),
               child: moyasar.ApplePay(
                 config: config,
-                onPaymentResult: _handlePaymentResult,
+                onPaymentResult: (result) {
+                  // Handle both success and error cases
+                  if (result is moyasar.PaymentResponse) {
+                    controller.onApplePayResult(result);
+                  } else {
+                    // Handle error (e.g., UnprocessableTokenError on simulator)
+                    controller.onApplePayError(result);
+                  }
+                },
               ),
             ),
           ),
@@ -88,10 +96,6 @@ class ApplePayButtonWidget extends StatelessWidget {
         ],
       );
     });
-  }
-
-  void _handlePaymentResult(moyasar.PaymentResponse result) {
-    controller.onApplePayResult(result);
   }
 
   Widget _buildDisabledButton(BuildContext context) {

@@ -249,6 +249,10 @@ const Map<String, String> arSA = {
       'لقد انتهى الوقت المحدد لإتمام الدفع. قد يتم إلغاء حجزك تلقائياً.',
   'please_check_card_details': 'يرجى التحقق من تفاصيل بطاقتك',
   'no_booking_found': 'لم يتم العثور على حجز',
+  'express_checkout': 'الدفع السريع',
+  'apple_pay_description': 'ادفع بسرعة وأمان باستخدام Apple Pay',
+  'apple_pay_unavailable': 'Apple Pay غير متاح',
+  'or': 'أو',
 
   // ==================== Reviews & Ratings ====================
   'reviews': 'التقييمات',

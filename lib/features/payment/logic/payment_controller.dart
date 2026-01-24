@@ -5,6 +5,7 @@
 // ============================================================================
 
 import 'dart:io';
+import 'package:achaytablereservation/app/routes/app_routes.dart';
 import 'package:achaytablereservation/core/services/ocr_services.dart';
 import 'package:achaytablereservation/features/payment/config/moyasar_config.dart';
 
@@ -16,7 +17,7 @@ import 'package:achaytablereservation/features/reservation/data/models/reservati
 import 'package:achaytablereservation/features/reservation/data/models/reservation_arguments.dart';
 import 'package:achaytablereservation/features/reservation/data/repositories/ReservationRepository.dart';
 import 'package:camera/camera.dart';
-import 'package:achaytablereservation/app/routes/app_routes.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -113,7 +114,7 @@ class PaymentController extends GetxController {
   }
 
   // void _initializeScanner() {
-  //   // _scanner = CardScanner();
+  //   _scanner = CardScanner();
   //   _scanner.onResult = (data) {
   //     cardNumber.value = data.formattedCardNumber;
   //     expirationDate.value = data.expirationDate;
@@ -432,7 +433,8 @@ class PaymentController extends GetxController {
       } else {
         _handlePaymentError(paymentResult.message ?? 'Payment failed');
       }
-    } catch (e) {
+    } 
+    catch (e) {
       _handlePaymentError(e.toString());
     }
   }
@@ -445,7 +447,8 @@ class PaymentController extends GetxController {
     MoyasarPaymentResult paymentResult,
   ) async {
     // Navigate to 3DS WebView
-    final threeDSResult = await Get.to<ThreeDSResult>(
+    final threeDSResult = 
+    await Get.to<ThreeDSResult>(
       () => ThreeDSWebView(
         transactionUrl: paymentResult.transactionUrl!,
         paymentId: paymentResult.paymentId!,
