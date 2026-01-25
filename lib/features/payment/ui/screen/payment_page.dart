@@ -133,9 +133,9 @@ class PaymentPage extends StatelessWidget {
                   return Column(
                     children: [
                       _buildApplePaySection(controller, context),
-                      SizedBox(height: context.spacing(24)),
-                      _buildPaymentMethodDivider(context),
-                      SizedBox(height: context.spacing(24)),
+                      SizedBox(height: context.spacing(14)),
+
+                      // _buildPaymentMethodDivider(context),
                     ],
                   );
                 }
@@ -144,38 +144,36 @@ class PaymentPage extends StatelessWidget {
 
               // ============ CREDIT CARD SECTION ============
               // Payment method header
-              Text(
-                'pay_with_card'.tr,
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  color: textPrimary,
-                  fontSize: context.fontSize(18),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              // Text(
+              //   'pay_with_card'.tr,
+              //   style: TextStyle(
+              //     fontFamily: 'Cairo',
+              //     color: textPrimary,
+              //     fontSize: context.fontSize(18),
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
 
-              SizedBox(height: context.spacing(16)),
+              // SizedBox(height: context.spacing(16)),
 
-              // Live Scan Button
-              // _buildLiveScanButton(controller, context),
-              SizedBox(height: context.spacing(24)),
+              // // Live Scan Button
+              // // _buildLiveScanButton(controller, context),
+              SizedBox(height: context.spacing(14)),
 
-              // Or divider
+              // // Or divider
               _buildOrDivider(context),
-
-              SizedBox(height: context.spacing(24)),
+              SizedBox(height: context.spacing(14)),
 
               // Card Details Form
-              Text(
-                'card_details'.tr,
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  color: textPrimary,
-                  fontSize: context.fontSize(18),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
+              // Text(
+              //   'card_details'.tr,
+              //   style: TextStyle(
+              //     fontFamily: 'Cairo',
+              //     color: textPrimary,
+              //     fontSize: context.fontSize(18),
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
               SizedBox(height: context.spacing(16)),
 
               // Card Number Input
@@ -961,15 +959,15 @@ class PaymentPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'express_checkout'.tr,
-          style: TextStyle(
-            fontFamily: 'Cairo',
-            color: textPrimary,
-            fontSize: context.fontSize(18),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        // Text(
+        //   'express_checkout'.tr,
+        //   style: TextStyle(
+        //     fontFamily: 'Cairo',
+        //     color: textPrimary,
+        //     fontSize: context.fontSize(18),
+        //     fontWeight: FontWeight.bold,
+        //   ),
+        // ),
         SizedBox(height: context.spacing(12)),
 
         // Apple Pay Button

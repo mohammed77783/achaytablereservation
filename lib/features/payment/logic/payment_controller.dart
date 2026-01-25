@@ -241,24 +241,24 @@ class PaymentController extends GetxController {
   //   isLiveScanActive.value = false;
   // }
 
-  Future<bool> _requestCameraPermission() async {
-    final status = await Permission.camera.status;
-    if (status.isGranted) return true;
-    if (status.isDenied) {
-      final result = await Permission.camera.request();
-      return result.isGranted;
-    }
-    if (status.isPermanentlyDenied) {
-      Get.snackbar(
-        'permission_required'.tr,
-        'camera_permission_settings'.tr,
-        snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 4),
-      );
-      await openAppSettings();
-    }
-    return false;
-  }
+  // Future<bool> _requestCameraPermission() async {
+  //   final status = await Permission.camera.status;
+  //   if (status.isGranted) return true;
+  //   if (status.isDenied) {
+  //     final result = await Permission.camera.request();
+  //     return result.isGranted;
+  //   }
+  //   if (status.isPermanentlyDenied) {
+  //     Get.snackbar(
+  //       'permission_required'.tr,
+  //       'camera_permission_settings'.tr,
+  //       snackPosition: SnackPosition.BOTTOM,
+  //       duration: const Duration(seconds: 4),
+  //     );
+  //     await openAppSettings();
+  //   }
+  //   return false;
+  // }
 
   // Future<void> pickImageFromGallery() async {
   //   try {
@@ -448,8 +448,7 @@ class PaymentController extends GetxController {
   ) async {
     // Navigate to 3DS WebView
     final threeDSResult = 
-    await Get.to<ThreeDSResult>(
-      () => ThreeDSWebView(
+    await Get.to<ThreeDSResult>(() => ThreeDSWebView(
         transactionUrl: paymentResult.transactionUrl!,
         paymentId: paymentResult.paymentId!,
       ),
@@ -575,7 +574,8 @@ class PaymentController extends GetxController {
         Get.snackbar(
           'warning'.tr,
           'payment_success_confirmation_pending'.tr,
-          snackPosition: SnackPosition.BOTTOM,
+          snackPosition: SnackPosition.TOP,
+          
           duration: const Duration(seconds: 5),
         );
         // Still navigate to success since payment went through
@@ -585,7 +585,7 @@ class PaymentController extends GetxController {
         Get.snackbar(
           'success'.tr,
           'payment_successful'.tr,
-          snackPosition: SnackPosition.BOTTOM,
+          snackPosition: SnackPosition.TOP,
         );
         _navigateToSuccess(transactionReference);
       },

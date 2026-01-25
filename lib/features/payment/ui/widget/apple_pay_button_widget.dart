@@ -68,7 +68,8 @@ class ApplePayButtonWidget extends StatelessWidget {
               height: context.spacing(56),
               child: moyasar.ApplePay(
                 config: config,
-                onPaymentResult: (result) {
+                onPaymentResult: (result) 
+                {
                   // Handle both success and error cases
                   if (result is moyasar.PaymentResponse) {
                     controller.onApplePayResult(result);

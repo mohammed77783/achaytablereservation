@@ -42,9 +42,6 @@ class ReservationConfirmationpage
             SizedBox(height: ResponsiveUtils.spacing(context, 16)),
             // Price Summary Card
             _buildPriceSummaryCard(context, isDark),
-            SizedBox(height: ResponsiveUtils.spacing(context, 16)),
-            // Terms and Conditions Checkbox
-            _buildTermsCheckbox(context, isDark),
             // Bottom padding for button
             const SizedBox(height: 100),
           ],
@@ -776,41 +773,8 @@ class ReservationConfirmationpage
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Timer reminder
-            Obx(
-              () => Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: ResponsiveUtils.spacing(context, 12),
-                  vertical: ResponsiveUtils.spacing(context, 8),
-                ),
-                decoration: BoxDecoration(
-                  color: controller
-                      .getTimerColor(isDark)
-                      .withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(LightTheme.borderRadius),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Iconsax.timer,
-                      size: 16,
-                      color: controller.getTimerColor(isDark),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '${"time_remaining".tr} ${controller.formattedTime}',
-                      style: TextStyle(
-                        fontFamily: 'Cairo',
-                        fontSize: ResponsiveUtils.fontSize(context, 12),
-                        fontWeight: FontWeight.w600,
-                        color: controller.getTimerColor(isDark),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Terms and Conditions Checkbox
+            _buildTermsCheckbox(context, isDark),
 
             SizedBox(height: ResponsiveUtils.spacing(context, 12)),
 
@@ -830,9 +794,7 @@ class ReservationConfirmationpage
                                 ? 'يرجى الموافقة على الشروط والأحكام للمتابعة'
                                 : 'Please accept the Terms & Conditions to proceed',
                             snackPosition: SnackPosition.TOP,
-                            backgroundColor: isDark
-                                ? DarkTheme.warningColor.withValues(alpha: 0.9)
-                                : LightTheme.warningColor.withValues(
+                            backgroundColor: isDark? DarkTheme.warningColor.withValues(alpha: 0.9) : LightTheme.warningColor.withValues(
                                     alpha: 0.9,
                                   ),
                             colorText: Colors.white,

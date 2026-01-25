@@ -72,11 +72,22 @@ class ThreeDSWebViewController extends GetxController {
             }
           },
           onNavigationRequest: (NavigationRequest request) {
-            // Intercept callback URL
-            if (request.url.startsWith(effectiveCallbackUrl) ||
-                request.url.contains('callback') ||
-                request.url.contains('moyasar')) {
-              _handleCallbackUrl(request.url);
+            // Intercept callback URL - but NOT the initial 3DS authentication page
+            // The callback URL will have query parameters like ?id=xxx&status=paid
+            final url = request.url;
+
+            // Skip interception for Moyasar's authentication pages
+            if (url.contains('api.moyasar.com') ||
+                url.contains('card_auth') ||
+                url.contains('3ds') ||
+                url.contains('acs')) {
+              return NavigationDecision.navigate;
+            }
+
+            // Intercept the actual callback URL (after 3DS completes)
+            if (url.startsWith(effectiveCallbackUrl) ||
+                (url.contains('callback') && url.contains('status='))) {
+              _handleCallbackUrl(url);
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;

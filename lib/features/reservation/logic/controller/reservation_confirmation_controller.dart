@@ -417,7 +417,6 @@ class ReservationConfirmationController extends BaseController {
           // Close dialog
           Get.back();
           isProcessingPayment.value = false;
-
           // Navigate to payment page with reservation data
           // Navigate to payment page with reservation data
           final args = PaymentArguments(
