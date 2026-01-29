@@ -8,7 +8,7 @@ class DevConfig implements EnvironmentConfig {
   @override
   AppEnvironment get environment => AppEnvironment.dev;
   @override
-  String get apiBaseUrl => 'http://192.168.8.134:5265/api';
+  String get apiBaseUrl => 'http://192.168.8.116:5265/api';
   @override
   String get appName => 'Achay (Dev)';
   @override
@@ -22,5 +22,4 @@ class DevConfig implements EnvironmentConfig {
     'enableMockData': true,
     'showPerformanceOverlay': false,
   };
-
 }

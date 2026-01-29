@@ -4,26 +4,26 @@ import 'environment_config.dart';
 /// Production environment configuration
 /// Used for live application in production
 class ProdConfig implements EnvironmentConfig {
+  
   @override
-  AppEnvironment get environment => AppEnvironment.production;
-
+  AppEnvironment get environment => AppEnvironment.dev;
   @override
-  String get apiBaseUrl => 'https://api.example.com';
-
+  String get apiBaseUrl => 'https://shamoustable-api-hwfghabqdxbpbqe6.canadacentral-01.azurewebsites.net/api/reservationMobileApi';
   @override
-  String get appName => 'Achay';
-
+  String get appName => 'Achay (Pro)';
   @override
-  bool get enableLogging => false;
-
+  bool get enableLogging => true;
   @override
-  bool get enableAnalytics => true;
-
+  bool get enableAnalytics => false;
   @override
   Map<String, dynamic> get additionalConfig => {
-    'timeout': 15000,
-    'enableDebugMode': false,
-    'enableMockData': false,
+    'timeout': 30000,
+    'enableDebugMode': true,
+    'enableMockData': true,
     'showPerformanceOverlay': false,
   };
+
 }
+
+
+

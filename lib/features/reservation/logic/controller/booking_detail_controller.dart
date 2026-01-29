@@ -99,7 +99,7 @@ class BookingDetailController extends BaseController {
         remainingDuration.value = Duration.zero;
         isDeadlineExpired.value = true;
         timer.cancel();
-        _showDeadlineExpiredDialog();
+        // _showDeadlineExpiredDialog();
       } else {
         remainingDuration.value = remaining;
       }
@@ -123,66 +123,64 @@ class BookingDetailController extends BaseController {
   }
 
   /// Show dialog when payment deadline expires
-  void _showDeadlineExpiredDialog() {
-    if (_deadlineDialogShown) return;
-    _deadlineDialogShown = true;
-
-    final isDark = Get.isDarkMode;
-
-    Get.dialog(
-      AlertDialog(
-        backgroundColor: isDark
-            ? DarkTheme.cardBackground
-            : LightTheme.cardBackground,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Row(
-          children: [
-            Icon(
-              Icons.timer_off_outlined,
-              color: isDark ? DarkTheme.errorColor : LightTheme.errorColor,
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Text(
-                isArabic ? 'انتهى وقت الدفع' : 'Payment Time Expired',
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  fontWeight: FontWeight.bold,
-                  color: isDark
-                      ? DarkTheme.textPrimary
-                      : LightTheme.textPrimary,
-                ),
-              ),
-            ),
-          ],
-        ),
-        content: Text(
-          isArabic
-              ? 'لقد انتهى الوقت المحدد لإتمام الدفع. قد يتم إلغاء حجزك تلقائياً.'
-              : 'The payment deadline has passed. Your reservation may be cancelled automatically.',
-          style: TextStyle(
-            fontFamily: 'Cairo',
-            color: isDark ? DarkTheme.textSecondary : LightTheme.textSecondary,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: Text(
-              isArabic ? 'حسناً' : 'OK',
-              style: TextStyle(
-                fontFamily: 'Cairo',
-                color: isDark
-                    ? DarkTheme.primaryLight
-                    : LightTheme.primaryColor,
-              ),
-            ),
-          ),
-        ],
-      ),
-      barrierDismissible: false,
-    );
-  }
+  // void _showDeadlineExpiredDialog() {
+  //   if (_deadlineDialogShown) return;
+  //   _deadlineDialogShown = true;
+  //   final isDark = Get.isDarkMode;
+  //   Get.dialog(
+  //     AlertDialog(
+  //       backgroundColor: isDark
+  //           ? DarkTheme.cardBackground
+  //           : LightTheme.cardBackground,
+  //       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+  //       title: Row(
+  //         children: [
+  //           Icon(
+  //             Icons.timer_off_outlined,
+  //             color: isDark ? DarkTheme.errorColor : LightTheme.errorColor,
+  //           ),
+  //           const SizedBox(width: 8),
+  //           Expanded(
+  //             child: Text(
+  //               isArabic ? 'انتهى وقت الدفع' : 'Payment Time Expired',
+  //               style: TextStyle(
+  //                 fontFamily: 'Cairo',
+  //                 fontWeight: FontWeight.bold,
+  //                 color: isDark
+  //                     ? DarkTheme.textPrimary
+  //                     : LightTheme.textPrimary,
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //       content: Text(
+  //         isArabic
+  //             ? 'لقد انتهى الوقت المحدد لإتمام الدفع. قد يتم إلغاء حجزك تلقائياً.'
+  //             : 'The payment deadline has passed. Your reservation may be cancelled automatically.',
+  //         style: TextStyle(
+  //           fontFamily: 'Cairo',
+  //           color: isDark ? DarkTheme.textSecondary : LightTheme.textSecondary,
+  //         ),
+  //       ),
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () => Get.back(),
+  //           child: Text(
+  //             isArabic ? 'حسناً' : 'OK',
+  //             style: TextStyle(
+  //               fontFamily: 'Cairo',
+  //               color: isDark
+  //                   ? DarkTheme.primaryLight
+  //                   : LightTheme.primaryColor,
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //     barrierDismissible: false,
+  //   );
+  // }
 
   /// Navigate to payment page with full booking details
   void goToPayment() {

@@ -363,7 +363,8 @@ class ApiClient {
   }) async {
     try {
       return await request();
-    } on NetworkException catch (e) {
+    } 
+    on NetworkException catch  (e) {
       // Retry on network errors with exponential backoff
       if (retryCount < ApiConstants.maxRetries) {
         final delayMs =
@@ -469,7 +470,8 @@ class ApiClient {
         );
       }
       rethrow;
-    } catch (e) {
+    }
+     catch (e) {
       // For non-retryable errors, log and rethrow immediately
       ErrorHandler.logError(
         'Non-retryable error occurred',

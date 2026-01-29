@@ -131,7 +131,8 @@ class HomepageRepository {
         restaurantId,
       );
       return Right(businessHours);
-    } catch (e) {
+    } 
+    catch (e) {
       final failure = ErrorHandler.exceptionToFailure(e as Exception);
       ErrorHandler.logFailure(
         failure,

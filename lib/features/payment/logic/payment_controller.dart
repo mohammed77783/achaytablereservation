@@ -4,8 +4,11 @@
 // File: lib/features/payment/logic/payment_controller.dart
 // ============================================================================
 
+import 'dart:async';
 import 'dart:io';
 import 'package:achaytablereservation/app/routes/app_routes.dart';
+import 'package:achaytablereservation/app/themes/dark_theme.dart';
+import 'package:achaytablereservation/app/themes/light_theme.dart';
 import 'package:achaytablereservation/core/services/ocr_services.dart';
 import 'package:achaytablereservation/features/payment/config/moyasar_config.dart';
 
@@ -55,6 +58,13 @@ class PaymentController extends GetxController {
   );
   final RxString paymentErrorMessage = ''.obs;
 
+  // Payment timer
+  final Rx<Duration?> remainingDuration = Rx<Duration?>(null);
+  final RxBool isDeadlineExpired = false.obs;
+  Timer? _countdownTimer;
+  String? _paymentDeadline;
+  bool _deadlineDialogShown = false;
+
   // Invoice/Reservation details
   final RxString restaurantName = ''.obs;
   final RxString dateDisplay = ''.obs;
@@ -72,24 +82,20 @@ class PaymentController extends GetxController {
   // ============================================================================
   // DEPENDENCIES
   // ============================================================================
-
   PaymentController({required ReservationRepository reservationRepository})
     : _reservationRepository = reservationRepository;
 
   final ReservationRepository _reservationRepository;
   final MoyasarPaymentService _moyasarService = MoyasarPaymentService();
-
   // Image picker & scanner
   final ImagePicker _imagePicker = ImagePicker();
   // late final CardScanner _scanner;
 
   // Moyasar SDK PaymentConfig (for Apple Pay)
   moyasar.PaymentConfig? _moyasarConfig;
-
   // ============================================================================
   // GETTERS
   // ============================================================================
-
   // Expose validator errors for UI binding
   RxnString get cardNumberError => validator.cardNumberError;
   RxnString get expiryDateError => validator.expiryDateError;
@@ -98,17 +104,13 @@ class PaymentController extends GetxController {
   // ============================================================================
   // LIFECYCLE
   // ============================================================================
-
   @override
   void onInit() {
     super.onInit();
-
     // Initialize invoice details from arguments
     _initializeInvoiceDetails();
-
     // Initialize scanner
     // _initializeScanner();
-
     // Check Apple Pay availability
     _checkApplePayAvailability();
   }
@@ -144,9 +146,13 @@ class PaymentController extends GetxController {
       totalPrice.value = args.totalPrice;
       bookingId.value = args.bookingId;
       _paymentSource = args.source;
-
+      _paymentDeadline = args.paymentDeadline;
       // Initialize Moyasar config with actual amount
       _initializeMoyasarConfig();
+      // Start payment deadline timer if deadline is provided
+      if (_paymentDeadline != null && _paymentDeadline!.isNotEmpty) {
+        _startCountdownTimer();
+      }
     }
   }
 
@@ -185,9 +191,162 @@ class PaymentController extends GetxController {
   }
 
   // ============================================================================
-  // NAVIGATION
+  // PAYMENT DEADLINE TIMER
   // ============================================================================
 
+  /// Check if Arabic locale
+  bool get isArabic => Get.locale?.languageCode == 'ar';
+
+  /// Check if timer should be shown (deadline exists and not expired)
+  bool get shouldShowTimer =>
+      _paymentDeadline != null &&
+      _paymentDeadline!.isNotEmpty &&
+      !isDeadlineExpired.value;
+
+  /// Start countdown timer based on payment deadline
+  void _startCountdownTimer() {
+    if (_paymentDeadline == null || _paymentDeadline!.isEmpty) return;
+
+    // Parse payment deadline
+    final DateTime? deadline = _parseDeadline(_paymentDeadline!);
+    if (deadline == null) return;
+
+    // Calculate remaining time
+    final now = DateTime.now();
+    final remaining = deadline.difference(now);
+
+    // Check if already expired
+    if (remaining.isNegative || remaining.inSeconds <= 0) {
+      isDeadlineExpired.value = true;
+      remainingDuration.value = Duration.zero;
+      return;
+    }
+
+    // Set initial remaining duration
+    remainingDuration.value = remaining;
+    isDeadlineExpired.value = false;
+
+    // Start timer that updates every second
+    _countdownTimer?.cancel();
+    _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      final now = DateTime.now();
+      final remaining = deadline.difference(now);
+
+      if (remaining.isNegative || remaining.inSeconds <= 0) {
+        remainingDuration.value = Duration.zero;
+        isDeadlineExpired.value = true;
+        timer.cancel();
+        _showDeadlineExpiredDialog();
+      } else {
+        remainingDuration.value = remaining;
+      }
+    });
+  }
+
+  /// Parse deadline string to DateTime
+  DateTime? _parseDeadline(String deadlineStr) {
+    try {
+      // Try ISO 8601 format first
+      return DateTime.parse(deadlineStr);
+    } catch (e) {
+      // Try other common formats if needed
+      try {
+        // Format: "2026-01-18 15:30:00"
+        return DateTime.parse(deadlineStr.replaceAll(' ', 'T'));
+      } catch (e) {
+        return null;
+      }
+    }
+  }
+
+  /// Format remaining duration for display
+  String get formattedRemainingTime {
+    final duration = remainingDuration.value;
+    if (duration == null || duration.inSeconds <= 0) {
+      return isArabic ? 'انتهى الوقت' : 'Time Expired';
+    }
+    final hours = duration.inHours;
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+
+    if (hours > 0) {
+      return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+    } else {
+      return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+    }
+  }
+
+  /// Show dialog when payment deadline expires
+  void _showDeadlineExpiredDialog() {
+    if (_deadlineDialogShown) return;
+    _deadlineDialogShown = true;
+
+    final isDark = Get.isDarkMode;
+
+    Get.dialog(
+      PopScope(
+        canPop: false,
+        child: AlertDialog(
+          backgroundColor:
+              isDark ? DarkTheme.cardBackground : LightTheme.cardBackground,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: Row(
+            children: [
+              Icon(
+                Icons.timer_off_outlined,
+                color: isDark ? DarkTheme.errorColor : LightTheme.errorColor,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  isArabic ? 'انتهى وقت الدفع' : 'Payment Time Expired',
+                  style: TextStyle(
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.bold,
+                    color:
+                        isDark ? DarkTheme.textPrimary : LightTheme.textPrimary,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          content: Text(
+            isArabic
+                ? 'لقد انتهى الوقت المحدد لإتمام الدفع. قد يتم إلغاء حجزك تلقائياً.'
+                : 'The payment deadline has passed. Your reservation may be cancelled automatically.',
+            style: TextStyle(
+              fontFamily: 'Cairo',
+              color: isDark ? DarkTheme.textSecondary : LightTheme.textSecondary,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back(); // Close dialog first
+                // Navigate after dialog is closed
+                Future.delayed(const Duration(milliseconds: 100), () {
+                  onBackPressed();
+                });
+              },
+              child: Text(
+                isArabic ? 'حسناً' : 'OK',
+                style: TextStyle(
+                  fontFamily: 'Cairo',
+                  color:
+                      isDark ? DarkTheme.primaryLight : LightTheme.primaryColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      barrierDismissible: false,
+    );
+  }
+
+  // ============================================================================
+  // NAVIGATION
+  // ============================================================================
   void onBackPressed() {
     if (_paymentSource == PaymentSource.bookingDetails) {
       Get.back();
@@ -208,9 +367,7 @@ class PaymentController extends GetxController {
   // ============================================================================
   // CAMERA METHODS (unchanged)
   // ============================================================================
-
   // CameraController? get cameraController => _scanner.cameraController;
-
   // Future<void> startLiveScanning() async {
   //   final hasPermission = await _requestCameraPermission();
   //   if (!hasPermission) {
@@ -221,7 +378,6 @@ class PaymentController extends GetxController {
   //     );
   //     return;
   //   }
-
   //   final success = await _scanner.initCamera();
   //   if (!success) {
   //     Get.snackbar(
@@ -231,7 +387,6 @@ class PaymentController extends GetxController {
   //     );
   //     return;
   //   }
-
   //   isLiveScanActive.value = true;
   //   await _scanner.startScan();
   // }
@@ -293,7 +448,7 @@ class PaymentController extends GetxController {
 
   // ============================================================================
   // FIELD UPDATE METHODS
-  // ============================================================================
+  // ==========================1==================================================
 
   void updateCardNumber(String value) {
     cardNumber.value = validator.formatCardNumber(value);
@@ -344,6 +499,22 @@ class PaymentController extends GetxController {
   // ============================================================================
 
   Future<void> processPayment() async {
+    // Check if payment deadline has expired
+    if (isDeadlineExpired.value) {
+      Get.snackbar(
+        isArabic ? 'انتهى الوقت' : 'Time Expired',
+        isArabic
+            ? 'انتهى الوقت المحدد للدفع. يرجى إجراء حجز جديد.'
+            : 'Payment deadline has expired. Please make a new reservation.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor:
+            Get.isDarkMode ? DarkTheme.errorColor : LightTheme.errorColor,
+        colorText: Colors.white,
+        duration: const Duration(seconds: 4),
+      );
+      return;
+    }
+
     if (selectedPaymentMethod.value == 'apple_pay') {
       await processApplePayPayment();
       return;
@@ -407,6 +578,7 @@ class PaymentController extends GetxController {
         expiryMonth: expiryMonth,
         expiryYear: expiryYear,
         cvc: cvv.value,
+        
         cardHolderName: cardHolderName.value.trim(),
         description:
             'Reservation #${bookingId.value} at ${restaurantName.value}',
@@ -553,8 +725,8 @@ class PaymentController extends GetxController {
   Future<void> _confirmReservationWithPayment(
     String transactionReference,
   ) async {
-    paymentStatus.value = MoyasarPaymentStatus.paid;
 
+    paymentStatus.value = MoyasarPaymentStatus.paid;
     final request = ConfirmReservationRequest(
       bookingId: bookingId.value.toString(),
       paymentMethod: selectedPaymentMethod.value == 'apple_pay'
@@ -566,7 +738,6 @@ class PaymentController extends GetxController {
 
     final result = await _reservationRepository.confirmReservation(request);
     isProcessing.value = false;
-
     result.fold(
       (failure) {
         // Payment was successful but backend confirmation failed
@@ -597,6 +768,7 @@ class PaymentController extends GetxController {
     Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
   }
 
+
   // ============================================================================
   // ERROR HANDLING
   // ============================================================================
@@ -624,6 +796,7 @@ class PaymentController extends GetxController {
 
   @override
   void onClose() {
+    _countdownTimer?.cancel();
     // _scanner.dispose();
     super.onClose();
   }

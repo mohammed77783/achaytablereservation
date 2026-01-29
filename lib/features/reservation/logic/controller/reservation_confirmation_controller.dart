@@ -124,7 +124,7 @@ class ReservationConfirmationController extends BaseController {
         remainingSeconds.value--;
       } else {
         timer.cancel();
-        _showTimeoutDialog();
+        // _showTimeoutDialog();
       }
     });
   }

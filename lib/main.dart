@@ -4,6 +4,7 @@ import 'package:achaytablereservation/app/themes/dark_theme.dart';
 import 'package:achaytablereservation/app/themes/light_theme.dart';
 import 'package:achaytablereservation/app/translations/app_translations.dart';
 import 'package:achaytablereservation/core/config/dev_config.dart';
+import 'package:achaytablereservation/core/config/prod_config.dart';
 import 'package:achaytablereservation/core/services/theme_service.dart';
 import 'package:flutter/material.dart';
 
@@ -186,6 +187,6 @@ class MyApp extends StatelessWidget {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeApp(DevConfig());
+  await initializeApp(ProdConfig());
   runApp(MyApp());
 }

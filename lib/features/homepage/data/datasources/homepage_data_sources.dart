@@ -230,7 +230,8 @@ class HomepageDataSources {
       );
 
       return _parseBusinessHoursResponse(response);
-    } catch (e) {
+    }
+     catch (e) {
       throw _handleException(e);
     }
   }
