@@ -52,9 +52,7 @@ class AppConstants {
 
   /// Enable notifications by default
   static const bool defaultNotificationsEnabled = true;
-
   // ==================== UI Configuration ====================
-
   /// Default animation duration in milliseconds
   static const int defaultAnimationDuration = 300;
 
@@ -107,7 +105,6 @@ class AppConstants {
   static const int rememberMeDays = 30;
 
   // ==================== Validation Rules ====================
-
   // /// Minimum password length
   // static const int minPasswordLength = 8;
   // /// Maximum password length

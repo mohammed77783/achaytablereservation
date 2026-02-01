@@ -64,37 +64,30 @@ class BookingDetailController extends BaseController {
     _countdownTimer?.cancel();
     super.onClose();
   }
-
   /// Start countdown timer based on payment deadline
   void _startCountdownTimer() {
     final detail = reservationDetail.value;
     if (detail == null) return;
-
     // Parse payment deadline (expected format: ISO 8601)
     final DateTime? deadline = _parseDeadline(detail.paymentDeadline);
     if (deadline == null) return;
-
     // Calculate remaining time
     final now = DateTime.now();
     final remaining = deadline.difference(now);
-
     // Check if already expired
     if (remaining.isNegative || remaining.inSeconds <= 0) {
       isDeadlineExpired.value = true;
       remainingDuration.value = Duration.zero;
       return;
     }
-
     // Set initial remaining duration
     remainingDuration.value = remaining;
     isDeadlineExpired.value = false;
-
     // Start timer that updates every second
     _countdownTimer?.cancel();
     _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       final now = DateTime.now();
       final remaining = deadline.difference(now);
-
       if (remaining.isNegative || remaining.inSeconds <= 0) {
         remainingDuration.value = Duration.zero;
         isDeadlineExpired.value = true;
@@ -107,15 +100,25 @@ class BookingDetailController extends BaseController {
   }
 
   /// Parse deadline string to DateTime
+  /// Server returns UTC timestamps without 'Z' suffix, so we append it
+  /// to ensure correct timezone handling.
   DateTime? _parseDeadline(String deadlineStr) {
     try {
-      // Try ISO 8601 format first
-      return DateTime.parse(deadlineStr);
+      String normalized = deadlineStr.trim();
+      // If no timezone info present, treat as UTC by appending 'Z'
+      if (!normalized.endsWith('Z') &&
+          !RegExp(r'[+-]\d{2}:\d{2}$').hasMatch(normalized)) {
+        normalized = '${normalized}Z';
+      }
+      return DateTime.parse(normalized).toLocal();
     } catch (e) {
-      // Try other common formats if needed
       try {
-        // Format: "2026-01-18 15:30:00"
-        return DateTime.parse(deadlineStr.replaceAll(' ', 'T'));
+        String normalized = deadlineStr.replaceAll(' ', 'T').trim();
+        if (!normalized.endsWith('Z') &&
+            !RegExp(r'[+-]\d{2}:\d{2}$').hasMatch(normalized)) {
+          normalized = '${normalized}Z';
+        }
+        return DateTime.parse(normalized).toLocal();
       } catch (e) {
         return null;
       }

@@ -43,8 +43,8 @@ class AppPages {
     GetPage(
       name: AppRoutes.SPLASH,
       page: () => const SplashScreen(),
-      binding:
-          InitialBinding(), // Contains all core dependencies including auth
+      // binding:
+      //     InitialBinding(), // Contains all core dependencies including auth
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 300),
     ),

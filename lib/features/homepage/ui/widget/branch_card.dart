@@ -29,7 +29,7 @@ class BranchCard extends StatelessWidget {
     if (userLatitude == null || userLongitude == null) {
       return null;
     }
-    
+  
     return DistanceUtils.calculateDistance(
       userLatitude!,
       userLongitude!,

@@ -6,6 +6,7 @@ import 'package:achaytablereservation/app/translations/app_translations.dart';
 import 'package:achaytablereservation/core/config/dev_config.dart';
 import 'package:achaytablereservation/core/config/prod_config.dart';
 import 'package:achaytablereservation/core/services/theme_service.dart';
+import 'package:achaytablereservation/core/services/translation_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -138,7 +139,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeService = Get.find<ThemeService>();
-
+    final translationService = Get.find<TranslationService>();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
 
@@ -150,7 +151,7 @@ class MyApp extends StatelessWidget {
       // ==================== Localization Configuration ====================
       translations: AppTranslations(),
       // Use Arabic as default locale for this app
-      locale: const Locale('ar', 'SA'),
+      // locale: const Locale('ar', 'SA'),
       // locale: translationService.currentLocale, // Uncomment to use dynamic locale
       fallbackLocale: AppTranslations.fallbackLocale,
 
@@ -160,11 +161,8 @@ class MyApp extends StatelessWidget {
       getPages: AppPages.routes,
 
       // ==================== App Configuration ====================
-
-      // locale: translationService.currentLocale,
-
-      // locale:      translationService.currentLocale,
-
+      locale: translationService.currentLocale,
+ 
       // Enable smart management for better performance
       smartManagement: SmartManagement.full,
 
@@ -180,9 +178,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
 
 
 void main() async {

@@ -244,15 +244,25 @@ class PaymentController extends GetxController {
   }
 
   /// Parse deadline string to DateTime
+  /// Server returns UTC timestamps without 'Z' suffix, so we append it
+  /// to ensure correct timezone handling.
   DateTime? _parseDeadline(String deadlineStr) {
     try {
-      // Try ISO 8601 format first
-      return DateTime.parse(deadlineStr);
+      String normalized = deadlineStr.trim();
+      // If no timezone info present, treat as UTC by appending 'Z'
+      if (!normalized.endsWith('Z') &&
+          !RegExp(r'[+-]\d{2}:\d{2}$').hasMatch(normalized)) {
+        normalized = '${normalized}Z';
+      }
+      return DateTime.parse(normalized).toLocal();
     } catch (e) {
-      // Try other common formats if needed
       try {
-        // Format: "2026-01-18 15:30:00"
-        return DateTime.parse(deadlineStr.replaceAll(' ', 'T'));
+        String normalized = deadlineStr.replaceAll(' ', 'T').trim();
+        if (!normalized.endsWith('Z') &&
+            !RegExp(r'[+-]\d{2}:\d{2}$').hasMatch(normalized)) {
+          normalized = '${normalized}Z';
+        }
+        return DateTime.parse(normalized).toLocal();
       } catch (e) {
         return null;
       }

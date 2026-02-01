@@ -372,16 +372,12 @@ class ReservationConfirmationController extends BaseController {
   /// Proceed to payment after confirmation - calls createReservation API
   Future<void> _proceedToPayment() async {
     isProcessingPayment.value = true;
-
     try {
       // Format date for API (yyyy-MM-dd)
       final formattedDate = selectedDate != null
-          ? DateFormat('yyyy-MM-dd').format(selectedDate!)
-          : '';
-
+          ? DateFormat('yyyy-MM-dd').format(selectedDate!): '';
       // Get time from time slot
       final time = selectedTimeSlot?.timeSlot.time ?? '';
-
       // Create reservation request
       final request = CreateReservationRequest(
         restaurantId: restaurantId.toString(),
@@ -391,7 +387,6 @@ class ReservationConfirmationController extends BaseController {
         numberOfGuests: guestCount.toString(),
         numberOfTables: requiredTables.toString(),
       );
-
       // Call API to create reservation
       final result = await _repository.createReservation(request);
       result.fold(
@@ -399,7 +394,6 @@ class ReservationConfirmationController extends BaseController {
           // Close dialog
           Get.back();
           isProcessingPayment.value = false;
-
           // Show error message
           Get.snackbar(
             isArabic ? 'خطأ' : 'Error',
@@ -431,7 +425,6 @@ class ReservationConfirmationController extends BaseController {
             timeDisplay: selectedTimeSlot?.timeSlot.displayText ?? '',
             guestCount: guestCount,
           );
-
           Get.toNamed(AppRoutes.paymentpage, arguments: args);
         },
       );
