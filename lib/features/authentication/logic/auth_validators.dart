@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import '../../../core/utils/validators.dart';
 
 /// Authentication-specific validation utilities
@@ -31,15 +32,15 @@ class AuthValidators {
   /// Uses standard password validation (6-100 characters)
   static String? validateRegistrationPassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return 'validation_password_required'.tr;
     }
 
     if (value.length < 6) {
-      return 'Password must be at least 6 characters long';
+      return 'validation_password_min_length'.tr;
     }
 
     if (value.length > 100) {
-      return 'Password must not exceed 100 characters';
+      return 'validation_password_max_length'.tr;
     }
 
     return null;
@@ -50,7 +51,7 @@ class AuthValidators {
   /// Basic validation for login (just required check)
   static String? validateLoginPassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return 'validation_password_required'.tr;
     }
 
     return null;
@@ -105,17 +106,17 @@ class AuthValidators {
   /// Requirements: 2-100 characters
   static String? validateFirstName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'First name is required';
+      return 'validation_first_name_required'.tr;
     }
 
     final trimmedValue = value.trim();
 
     if (trimmedValue.length < 2) {
-      return 'First name must be at least 2 characters long';
+      return 'validation_first_name_min_length'.tr;
     }
 
     if (trimmedValue.length > 100) {
-      return 'First name must not exceed 100 characters';
+      return 'validation_first_name_max_length'.tr;
     }
 
     return null;
@@ -126,19 +127,17 @@ class AuthValidators {
   /// Requirements: 2-100 characters
   static String? validateLastName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Last name is required';
+      return 'validation_last_name_required'.tr;
     }
 
     final trimmedValue = value.trim();
 
     if (trimmedValue.length < 2) {
-      return 'Last name must be at least 2 characters long';
+      return 'validation_last_name_min_length'.tr;
     }
-
     if (trimmedValue.length > 100) {
-      return 'Last name must not exceed 100 characters';
+      return 'validation_last_name_max_length'.tr;
     }
-
     return null;
   }
 

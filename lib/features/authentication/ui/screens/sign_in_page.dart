@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:achaytablereservation/core/utils/responsive_utils.dart';
-import 'package:achaytablereservation/core/utils/validators.dart';
 import 'package:achaytablereservation/features/authentication/logic/sign_in_controller.dart';
+import 'package:achaytablereservation/features/authentication/logic/auth_validators.dart';
 import 'package:achaytablereservation/app/routes/app_routes.dart';
 
 /// Color constants for modern design
@@ -32,6 +32,38 @@ class _SignUpPageState extends State<SignUpPage> {
   final _confirmPasswordController = TextEditingController();
   final _obscurePassword = true.obs;
   final _obscureConfirmPassword = true.obs;
+
+  @override
+  void initState() {
+    super.initState();
+    _setupTextControllerListeners();
+  }
+
+  void _setupTextControllerListeners() {
+    _firstNameController.addListener(() {
+      Get.find<SignUpController>().clearFieldError('firstName');
+    });
+
+    _lastNameController.addListener(() {
+      Get.find<SignUpController>().clearFieldError('lastName');
+    });
+
+    _phoneController.addListener(() {
+      Get.find<SignUpController>().clearFieldError('phoneNumber');
+    });
+
+    _emailController.addListener(() {
+      Get.find<SignUpController>().clearFieldError('email');
+    });
+
+    _passwordController.addListener(() {
+      Get.find<SignUpController>().clearFieldError('password');
+    });
+
+    _confirmPasswordController.addListener(() {
+      Get.find<SignUpController>().clearFieldError('confirmPassword');
+    });
+  }
 
   @override
   void dispose() {
@@ -109,10 +141,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'first_name'.tr,
                   hintText: 'enter_first_name'.tr,
                   prefixIcon: Icons.person,
-                  validator: (v) => Validators.validateRequired(
-                    v,
-                    fieldName: 'first_name'.tr,
-                  ),
+                  validator: (v) => AuthValidators.validateFirstName(v),
+                  fieldKey: 'firstName',
                 ),
                 SizedBox(height: context.spacing(16)),
 
@@ -123,8 +153,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'last_name'.tr,
                   hintText: 'enter_last_name'.tr,
                   prefixIcon: Icons.person,
-                  validator: (v) =>
-                      Validators.validateRequired(v, fieldName: 'last_name'.tr),
+                  validator: (v) => AuthValidators.validateLastName(v),
+                  fieldKey: 'lastName',
                 ),
                 SizedBox(height: context.spacing(16)),
 
@@ -136,7 +166,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: '05xxxxxxxx',
                   prefixIcon: Icons.phone,
                   keyboardType: TextInputType.phone,
-                  validator: (v) => Validators.validateSaudiPhoneNumber(v),
+                  validator: (v) =>
+                      AuthValidators.validateRegistrationPhoneNumber(v),
+                  fieldKey: 'phoneNumber',
                 ),
                 SizedBox(height: context.spacing(16)),
 
@@ -148,10 +180,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: 'enter_email'.tr,
                   prefixIcon: Icons.email,
                   keyboardType: TextInputType.emailAddress,
-                  validator: (v) {
-                    if (v?.trim().isEmpty ?? true) return null;
-                    return Validators.validateEmail(v);
-                  },
+                  validator: (v) => AuthValidators.validateRegistrationEmail(v),
+                  fieldKey: 'email',
                 ),
                 SizedBox(height: context.spacing(16)),
 
@@ -162,7 +192,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'password'.tr,
                   hintText: 'enter_password'.tr,
                   obscureValue: _obscurePassword,
-                  validator: (v) => Validators.validateStrongPassword(v),
+                  validator: (v) =>
+                      AuthValidators.validateRegistrationPassword(v),
+                  fieldKey: 'password',
                 ),
                 SizedBox(height: context.spacing(16)),
 
@@ -173,10 +205,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   labelText: 'confirm_password'.tr,
                   hintText: 'confirm_password_hint'.tr,
                   obscureValue: _obscureConfirmPassword,
-                  validator: (v) => Validators.validatePasswordMatch(
+                  validator: (v) => AuthValidators.validatePasswordConfirmation(
                     _passwordController.text,
                     v,
                   ),
+                  fieldKey: 'confirmPassword',
                   onFieldSubmitted: (_) => _handleRegistration(controller),
                 ),
                 SizedBox(height: context.spacing(24)),
@@ -305,65 +338,80 @@ class _SignUpPageState extends State<SignUpPage> {
     required IconData prefixIcon,
     TextInputType? keyboardType,
     String? Function(String?)? validator,
+    String? fieldKey,
   }) {
-    return TextFormField(
-      controller: controller,
-      keyboardType: keyboardType,
-      textInputAction: TextInputAction.next,
-      validator: validator,
-      style: TextStyle(
-        fontSize: context.fontSize(14),
-        color: AppColors.textPrimary,
-      ),
-      decoration: InputDecoration(
-        labelText: labelText,
-        hintText: hintText,
-        labelStyle: TextStyle(
+    return Obx(() {
+      final formController = Get.find<SignUpController>();
+      final fieldError = fieldKey != null
+          ? formController.formErrors[fieldKey]
+          : null;
+
+      return TextFormField(
+        controller: controller,
+        keyboardType: keyboardType,
+        textInputAction: TextInputAction.next,
+        validator: (value) {
+          // First check field-specific error from controller
+          if (fieldError != null) {
+            return fieldError;
+          }
+          // Then run the validator function
+          return validator?.call(value);
+        },
+        style: TextStyle(
           fontSize: context.fontSize(14),
-          color: AppColors.textSecondary,
+          color: AppColors.textPrimary,
         ),
-        hintStyle: TextStyle(
-          fontSize: context.fontSize(14),
-          color: AppColors.textSecondary.withOpacity(0.6),
-        ),
-        prefixIcon: Icon(
-          prefixIcon,
-          color: AppColors.mintAccent,
-          size: context.spacing(20),
-        ),
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: EdgeInsets.symmetric(
-          horizontal: context.spacing(16),
-          vertical: context.spacing(16),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(context.spacing(12)),
-          borderSide: BorderSide(
-            color: AppColors.textSecondary.withOpacity(0.3),
+        decoration: InputDecoration(
+          labelText: labelText,
+          hintText: hintText,
+          labelStyle: TextStyle(
+            fontSize: context.fontSize(14),
+            color: AppColors.textSecondary,
           ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(context.spacing(12)),
-          borderSide: BorderSide(
-            color: AppColors.textSecondary.withOpacity(0.3),
+          hintStyle: TextStyle(
+            fontSize: context.fontSize(14),
+            color: AppColors.textSecondary.withOpacity(0.6),
           ),
+          prefixIcon: Icon(
+            prefixIcon,
+            color: AppColors.mintAccent,
+            size: context.spacing(20),
+          ),
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: context.spacing(16),
+            vertical: context.spacing(16),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(context.spacing(12)),
+            borderSide: BorderSide(
+              color: AppColors.textSecondary.withOpacity(0.3),
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(context.spacing(12)),
+            borderSide: BorderSide(
+              color: AppColors.textSecondary.withOpacity(0.3),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(context.spacing(12)),
+            borderSide: const BorderSide(color: AppColors.mintAccent, width: 2),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(context.spacing(12)),
+            borderSide: const BorderSide(color: Colors.red),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(context.spacing(12)),
+            borderSide: const BorderSide(color: Colors.red, width: 2),
+          ),
+          errorStyle: TextStyle(fontSize: context.fontSize(12)),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(context.spacing(12)),
-          borderSide: const BorderSide(color: AppColors.mintAccent, width: 2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(context.spacing(12)),
-          borderSide: const BorderSide(color: Colors.red),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(context.spacing(12)),
-          borderSide: const BorderSide(color: Colors.red, width: 2),
-        ),
-        errorStyle: TextStyle(fontSize: context.fontSize(12)),
-      ),
-    );
+      );
+    });
   }
 
   Widget _buildPasswordField(
@@ -373,16 +421,29 @@ class _SignUpPageState extends State<SignUpPage> {
     required String hintText,
     required RxBool obscureValue,
     String? Function(String?)? validator,
+    String? fieldKey,
     void Function(String)? onFieldSubmitted,
   }) {
-    return Obx(
-      () => TextFormField(
+    return Obx(() {
+      final formController = Get.find<SignUpController>();
+      final fieldError = fieldKey != null
+          ? formController.formErrors[fieldKey]
+          : null;
+
+      return TextFormField(
         controller: controller,
         obscureText: obscureValue.value,
         textInputAction: onFieldSubmitted != null
             ? TextInputAction.done
             : TextInputAction.next,
-        validator: validator,
+        validator: (value) {
+          // First check field-specific error from controller
+          if (fieldError != null) {
+            return fieldError;
+          }
+          // Then run the validator function
+          return validator?.call(value);
+        },
         onFieldSubmitted: onFieldSubmitted,
         style: TextStyle(
           fontSize: context.fontSize(14),
@@ -444,8 +505,8 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           errorStyle: TextStyle(fontSize: context.fontSize(12)),
         ),
-      ),
-    );
+      );
+    });
   }
 
   void _handleNavigation(
@@ -472,17 +533,21 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Future<void> _handleRegistration(SignUpController controller) async {
-    if (_formKey.currentState?.validate() ?? false) {
-      await controller.register(
-        firstName: _firstNameController.text.trim(),
-        lastName: _lastNameController.text.trim(),
-        phoneNumber: _phoneController.text.trim(),
-        email: _emailController.text.trim().isEmpty
-            ? null
-            : _emailController.text.trim(),
-        password: _passwordController.text,
-        confirmPassword: _confirmPasswordController.text,
-      );
+    // Always attempt registration - validation will be handled by the controller
+    await controller.register(
+      firstName: _firstNameController.text.trim(),
+      lastName: _lastNameController.text.trim(),
+      phoneNumber: _phoneController.text.trim(),
+      email: _emailController.text.trim().isEmpty
+          ? null
+          : _emailController.text.trim(),
+      password: _passwordController.text,
+      confirmPassword: _confirmPasswordController.text,
+    );
+
+    // If there are form errors, trigger form validation to show them
+    if (controller.formErrors.isNotEmpty) {
+      _formKey.currentState?.validate();
     }
   }
 }

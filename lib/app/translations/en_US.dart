@@ -332,6 +332,46 @@ const Map<String, String> enUS = {
       'Enter the 6-digit code sent to your phone to verify your account.',
   'verify_continue': 'Verify & Continue',
 
+  // ==================== Validation Messages ====================
+  'validation_first_name_required': 'First name is required',
+  'validation_first_name_min_length':
+      'First name must be at least 2 characters long',
+  'validation_first_name_max_length':
+      'First name must not exceed 100 characters',
+  'validation_last_name_required': 'Last name is required',
+  'validation_last_name_min_length':
+      'Last name must be at least 2 characters long',
+  'validation_last_name_max_length': 'Last name must not exceed 100 characters',
+  'validation_phone_required': 'Phone number is required',
+  'validation_phone_digits_only': 'Phone number must contain only digits',
+  'validation_phone_saudi_format':
+      'Please enter a valid Saudi phone number (05xxxxxxxx or 5xxxxxxxx)',
+  'validation_email_required': 'Email is required',
+  'validation_email_invalid': 'Please enter a valid email address',
+  'validation_password_required': 'Password is required',
+  'validation_password_min_length':
+      'Password must be at least 6 characters long',
+  'validation_password_max_length': 'Password must not exceed 100 characters',
+  'validation_password_strong_required':
+      'Password must be at least 8 characters long',
+  'validation_password_uppercase':
+      'Password must contain at least one uppercase letter',
+  'validation_password_lowercase':
+      'Password must contain at least one lowercase letter',
+  'validation_password_number': 'Password must contain at least one number',
+  'validation_password_special':
+      'Password must contain at least one special character',
+  'validation_confirm_password_required': 'Please confirm your password',
+  'validation_passwords_not_match': 'Passwords do not match',
+  'validation_otp_required': 'OTP code is required',
+  'validation_otp_format': 'OTP code must be exactly 6 digits',
+  'validation_field_required': 'This field is required',
+  'validation_min_length': 'This field must be at least @length characters',
+  'validation_max_length': 'This field must not exceed @length characters',
+  'validation_numeric_required': 'This field must be a valid number',
+  'validation_url_required': 'URL is required',
+  'validation_url_invalid': 'Please enter a valid URL',
+
   // ==================== Authentication Error Messages ====================
   'cache_error': 'Storage error occurred',
   'parsing_error': 'Data parsing error occurred',

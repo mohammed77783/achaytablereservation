@@ -9,7 +9,6 @@ import 'package:achaytablereservation/core/errors/exceptions.dart';
 import 'package:achaytablereservation/core/errors/error_handler.dart';
 import 'package:achaytablereservation/features/authentication/data/repositories/auth_repository.dart';
 import 'package:achaytablereservation/features/authentication/data/models/auth_request_models.dart';
-import 'package:achaytablereservation/features/authentication/data/models/auth_response_models.dart';
 import 'package:achaytablereservation/features/authentication/logic/auth_validators.dart';
 
 /// SignUp screen controller
@@ -66,6 +65,8 @@ class SignUpController extends GetxController {
 
     if (validationErrors.isNotEmpty) {
       formErrors.addAll(validationErrors);
+      // Trigger form validation to show errors
+      update();
       return;
     }
 
@@ -105,6 +106,13 @@ class SignUpController extends GetxController {
       _handleException(e, 'Registration failed');
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  /// Clear field-specific error when user starts typing
+  void clearFieldError(String fieldKey) {
+    if (formErrors.containsKey(fieldKey)) {
+      formErrors.remove(fieldKey);
     }
   }
 

@@ -213,7 +213,7 @@ const Map<String, String> arSA = {
   'payment': 'الدفع',
   'payment_method': 'طريقة الدفع',
   'payment_details': 'تفاصيل الدفع',
-    'pay_with_card': 'الدفع بالبطاقة',
+  'pay_with_card': 'الدفع بالبطاقة',
   'total': 'الإجمالي',
   'subtotal': 'المجموع الفرعي',
   'tax': 'الضريبة',
@@ -329,6 +329,43 @@ const Map<String, String> arSA = {
   'registration_verification_subtitle':
       'أدخل الرمز المكون من 6 أرقام المرسل إلى هاتفك للتحقق من حسابك.',
   'verify_continue': 'تحقق ومتابعة',
+
+  // ==================== Validation Messages ====================
+  'validation_first_name_required': 'الاسم الأول مطلوب',
+  'validation_first_name_min_length': 'يجب أن يكون الاسم الأول حرفين على الأقل',
+  'validation_first_name_max_length': 'يجب ألا يتجاوز الاسم الأول 100 حرف',
+  'validation_last_name_required': 'اسم العائلة مطلوب',
+  'validation_last_name_min_length': 'يجب أن يكون اسم العائلة حرفين على الأقل',
+  'validation_last_name_max_length': 'يجب ألا يتجاوز اسم العائلة 100 حرف',
+  'validation_phone_required': 'رقم الهاتف مطلوب',
+  'validation_phone_digits_only': 'يجب أن يحتوي رقم الهاتف على أرقام فقط',
+  'validation_phone_saudi_format':
+      'يرجى إدخال رقم هاتف سعودي صحيح (05xxxxxxxx أو 5xxxxxxxx)',
+  'validation_email_required': 'البريد الإلكتروني مطلوب',
+  'validation_email_invalid': 'يرجى إدخال عنوان بريد إلكتروني صحيح',
+  'validation_password_required': 'كلمة المرور مطلوبة',
+  'validation_password_min_length': 'يجب أن تكون كلمة المرور 6 أحرف على الأقل',
+  'validation_password_max_length': 'يجب ألا تتجاوز كلمة المرور 100 حرف',
+  'validation_password_strong_required':
+      'يجب أن تكون كلمة المرور 8 أحرف على الأقل',
+  'validation_password_uppercase':
+      'يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل',
+  'validation_password_lowercase':
+      'يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل',
+  'validation_password_number':
+      'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل',
+  'validation_password_special':
+      'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل',
+  'validation_confirm_password_required': 'يرجى تأكيد كلمة المرور',
+  'validation_passwords_not_match': 'كلمات المرور غير متطابقة',
+  'validation_otp_required': 'رمز التحقق مطلوب',
+  'validation_otp_format': 'يجب أن يكون رمز التحقق 6 أرقام بالضبط',
+  'validation_field_required': 'هذا الحقل مطلوب',
+  'validation_min_length': 'يجب أن يكون هذا الحقل @length أحرف على الأقل',
+  'validation_max_length': 'يجب ألا يتجاوز هذا الحقل @length حرف',
+  'validation_numeric_required': 'يجب أن يكون هذا الحقل رقماً صحيحاً',
+  'validation_url_required': 'الرابط مطلوب',
+  'validation_url_invalid': 'يرجى إدخال رابط صحيح',
 
   // ==================== Authentication Error Messages ====================
   'cache_error': 'حدث خطأ في التخزين',
