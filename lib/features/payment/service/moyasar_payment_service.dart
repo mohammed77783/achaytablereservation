@@ -130,13 +130,11 @@ class MoyasarPaymentService {
         'source': {'type': 'applepay', 'token': applePayToken},
         'metadata': metadata ?? {},
       };
-
       final response = await http.post(
         Uri.parse('$_baseUrl/payments'),
         headers: _headers,
         body: jsonEncode(body),
       );
-
       return _parsePaymentResponse(response);
     } catch (e) {
       return MoyasarPaymentResult(

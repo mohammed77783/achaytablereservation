@@ -54,7 +54,7 @@ class MoyasarConfig {
   // ======================== Apple Pay Settings ========================
 
   /// Apple Pay Merchant ID (from Apple Developer Portal)
-  static const String appleMerchantId = 'merchant.com.mysr.apple';
+  static const String appleMerchantId = 'merchant.com.achay.achaytablereservation';
 
   /// Display name shown on Apple Pay sheet
   static const String applePayDisplayName = 'Achay Table Reservation';
