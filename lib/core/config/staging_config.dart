@@ -20,6 +20,9 @@ class StagingConfig implements EnvironmentConfig {
   bool get enableAnalytics => true;
 
   @override
+  String get publishableKey => 'pk_test_SiJyYMve66Myma5vCZfhKrbWhp3ikYd25viRcRGt';
+
+  @override
   Map<String, dynamic> get additionalConfig => {
     'timeout': 30000,
     'enableDebugMode': false,

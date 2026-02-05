@@ -63,6 +63,13 @@ class EnvironmentService extends GetxService {
     return _config.enableAnalytics;
   }
 
+  /// Get the Moyasar publishable API key for the current environment
+  /// Throws [StateError] if not initialized
+  String get publishableKey {
+    _ensureInitialized();
+    return _config.publishableKey;
+  }
+
   /// Get additional configuration values
   /// Throws [StateError] if not initialized
   Map<String, dynamic> get additionalConfig {

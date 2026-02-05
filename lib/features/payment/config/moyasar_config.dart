@@ -4,20 +4,23 @@
 // File: lib/core/config/moyasar_config.dart
 // ============================================================================
 
+import 'package:get/get.dart';
+
+import '../../../core/services/environment_service.dart';
+
 /// Moyasar Payment Gateway Configuration
 ///
-/// IMPORTANT: In production, load these from environment variables or
-/// secure storage, not hardcoded!
+/// The publishable key is loaded from EnvironmentConfig via EnvironmentService.
 class MoyasarConfig {
   MoyasarConfig._();
 
   // ======================== API Keys ========================
-  // Use test keys for development, live keys for production
+  // Key is resolved per environment (dev/staging/prod) via EnvironmentService
 
   /// Publishable API Key (safe to use in client-side code)
   /// Used for: Creating payments from Flutter app
-  static const String publishableKey =
-      'pk_test_8zs4A361QwqbMoRQTTnjap1g7ihNe4L7xxRzV2cE';
+  static String get publishableKey =>
+      Get.find<EnvironmentService>().publishableKey;
 
   /// Secret API Key (NEVER expose in client code!)
   /// Used for: Backend webhook verification, refunds, captures

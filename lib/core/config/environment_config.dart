@@ -14,6 +14,9 @@ abstract class EnvironmentConfig {
   bool get enableLogging;
   /// Whether to enable analytics tracking
   bool get enableAnalytics;
+  /// Moyasar publishable API key for payment processing
+  String get publishableKey;
+
   /// Additional environment-specific configuration values
   /// Can be used for feature flags, timeouts, or other custom settings
   Map<String, dynamic> get additionalConfig;

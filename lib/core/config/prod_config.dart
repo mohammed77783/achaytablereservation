@@ -16,6 +16,8 @@ class ProdConfig implements EnvironmentConfig {
   @override
   bool get enableAnalytics => false;
   @override
+  String get publishableKey => 'pk_live_7nfDAK84rNJtAxuFwXqhyTkxZYpf7Ls4MK88FXhj';
+  @override
   Map<String, dynamic> get additionalConfig => {
     'timeout': 30000,
     'enableDebugMode': true,
