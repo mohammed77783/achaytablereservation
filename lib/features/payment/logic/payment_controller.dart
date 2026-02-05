@@ -19,12 +19,10 @@ import 'package:achaytablereservation/features/payment/ui/widget/three_ds_webvie
 import 'package:achaytablereservation/features/reservation/data/models/reservation_models.dart';
 import 'package:achaytablereservation/features/reservation/data/models/reservation_arguments.dart';
 import 'package:achaytablereservation/features/reservation/data/repositories/ReservationRepository.dart';
-import 'package:camera/camera.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 // Moyasar SDK imports (for Apple Pay)
@@ -87,8 +85,7 @@ class PaymentController extends GetxController {
 
   final ReservationRepository _reservationRepository;
   final MoyasarPaymentService _moyasarService = MoyasarPaymentService();
-  // Image picker & scanner
-  final ImagePicker _imagePicker = ImagePicker();
+  // Image picker & scanner - REMOVED (not used)
   // late final CardScanner _scanner;
 
   // Moyasar SDK PaymentConfig (for Apple Pay)
@@ -297,9 +294,12 @@ class PaymentController extends GetxController {
       PopScope(
         canPop: false,
         child: AlertDialog(
-          backgroundColor:
-              isDark ? DarkTheme.cardBackground : LightTheme.cardBackground,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          backgroundColor: isDark
+              ? DarkTheme.cardBackground
+              : LightTheme.cardBackground,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           title: Row(
             children: [
               Icon(
@@ -313,8 +313,9 @@ class PaymentController extends GetxController {
                   style: TextStyle(
                     fontFamily: 'Cairo',
                     fontWeight: FontWeight.bold,
-                    color:
-                        isDark ? DarkTheme.textPrimary : LightTheme.textPrimary,
+                    color: isDark
+                        ? DarkTheme.textPrimary
+                        : LightTheme.textPrimary,
                   ),
                 ),
               ),
@@ -326,7 +327,9 @@ class PaymentController extends GetxController {
                 : 'The payment deadline has passed. Your reservation may be cancelled automatically.',
             style: TextStyle(
               fontFamily: 'Cairo',
-              color: isDark ? DarkTheme.textSecondary : LightTheme.textSecondary,
+              color: isDark
+                  ? DarkTheme.textSecondary
+                  : LightTheme.textSecondary,
             ),
           ),
           actions: [
@@ -342,8 +345,9 @@ class PaymentController extends GetxController {
                 isArabic ? 'حسناً' : 'OK',
                 style: TextStyle(
                   fontFamily: 'Cairo',
-                  color:
-                      isDark ? DarkTheme.primaryLight : LightTheme.primaryColor,
+                  color: isDark
+                      ? DarkTheme.primaryLight
+                      : LightTheme.primaryColor,
                 ),
               ),
             ),
@@ -517,8 +521,9 @@ class PaymentController extends GetxController {
             ? 'انتهى الوقت المحدد للدفع. يرجى إجراء حجز جديد.'
             : 'Payment deadline has expired. Please make a new reservation.',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor:
-            Get.isDarkMode ? DarkTheme.errorColor : LightTheme.errorColor,
+        backgroundColor: Get.isDarkMode
+            ? DarkTheme.errorColor
+            : LightTheme.errorColor,
         colorText: Colors.white,
         duration: const Duration(seconds: 4),
       );
@@ -588,7 +593,7 @@ class PaymentController extends GetxController {
         expiryMonth: expiryMonth,
         expiryYear: expiryYear,
         cvc: cvv.value,
-        
+
         cardHolderName: cardHolderName.value.trim(),
         description:
             'Reservation #${bookingId.value} at ${restaurantName.value}',
@@ -615,8 +620,7 @@ class PaymentController extends GetxController {
       } else {
         _handlePaymentError(paymentResult.message ?? 'Payment failed');
       }
-    } 
-    catch (e) {
+    } catch (e) {
       _handlePaymentError(e.toString());
     }
   }
@@ -629,8 +633,8 @@ class PaymentController extends GetxController {
     MoyasarPaymentResult paymentResult,
   ) async {
     // Navigate to 3DS WebView
-    final threeDSResult = 
-    await Get.to<ThreeDSResult>(() => ThreeDSWebView(
+    final threeDSResult = await Get.to<ThreeDSResult>(
+      () => ThreeDSWebView(
         transactionUrl: paymentResult.transactionUrl!,
         paymentId: paymentResult.paymentId!,
       ),
@@ -735,7 +739,6 @@ class PaymentController extends GetxController {
   Future<void> _confirmReservationWithPayment(
     String transactionReference,
   ) async {
-
     paymentStatus.value = MoyasarPaymentStatus.paid;
     final request = ConfirmReservationRequest(
       bookingId: bookingId.value.toString(),
@@ -756,7 +759,7 @@ class PaymentController extends GetxController {
           'warning'.tr,
           'payment_success_confirmation_pending'.tr,
           snackPosition: SnackPosition.TOP,
-          
+
           duration: const Duration(seconds: 5),
         );
         // Still navigate to success since payment went through
@@ -777,7 +780,6 @@ class PaymentController extends GetxController {
     // Navigate to main page or success page
     Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
   }
-
 
   // ============================================================================
   // ERROR HANDLING

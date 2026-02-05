@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
-import 'package:camera/camera.dart';
 
 /// Payment Screen with live card scanner
 class PaymentPage extends StatelessWidget {

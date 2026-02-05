@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'app/bindings/initial_binding.dart';
 
 import 'core/config/environment_config.dart';
@@ -31,7 +32,7 @@ Future<void> initializeApp(EnvironmentConfig config) async {
   // ==================== Environment Service Pre-Initialization ====================
   // Initialize EnvironmentService FIRST before any other dependencies
   // This is critical because ApiClient (created in InitialBinding) depends on it
-  
+
   Get.put<EnvironmentService>(EnvironmentService(), permanent: true);
 
   final environmentService = Get.find<EnvironmentService>();
@@ -162,7 +163,7 @@ class MyApp extends StatelessWidget {
 
       // ==================== App Configuration ====================
       locale: translationService.currentLocale,
- 
+
       // Enable smart management for better performance
       smartManagement: SmartManagement.full,
 
@@ -179,9 +180,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeApp(ProdConfig());
-  runApp(MyApp());
+
+  await SentryFlutter.init((options) {
+    options.dsn =
+        'https://03e86b6a66b5356dae3b4b907ac32c75@o4510832726507520.ingest.us.sentry.io/4510832982425600';
+    options.tracesSampleRate = .01;
+    options.sendDefaultPii = true;
+  }, appRunner: () => runApp(SentryWidget(child: MyApp())));
+
+  // runApp(MyApp());
 }

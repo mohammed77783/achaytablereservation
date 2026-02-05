@@ -23,7 +23,7 @@ class AppConstants {
       'A Flutter application with clean architecture';
 
   static const String termsUrlEn =
-      'https://mohammed77783.github.io/achaytermandcondition/';
+      'https://mohammed77783.github.io/achaytermandcondition/index';
   static const String termsUrlAr =
       'https://mohammed77783.github.io/achaytermandcondition/index-ar';
 
