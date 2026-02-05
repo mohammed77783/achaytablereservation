@@ -7,6 +7,7 @@ import 'package:achaytablereservation/core/config/dev_config.dart';
 import 'package:achaytablereservation/core/config/prod_config.dart';
 import 'package:achaytablereservation/core/services/theme_service.dart';
 import 'package:achaytablereservation/core/services/translation_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -184,12 +185,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeApp(ProdConfig());
 
-  await SentryFlutter.init((options) {
-    options.dsn =
-        'https://03e86b6a66b5356dae3b4b907ac32c75@o4510832726507520.ingest.us.sentry.io/4510832982425600';
+if(kReleaseMode){
+    await SentryFlutter.init((options) {
+    options.dsn ='https://03e86b6a66b5356dae3b4b907ac32c75@o4510832726507520.ingest.us.sentry.io/4510832982425600';
     options.tracesSampleRate = .01;
     options.sendDefaultPii = true;
-  }, appRunner: () => runApp(SentryWidget(child: MyApp())));
+  }, appRunner: () async {
+    // Simple Sentry test - sends a test exception and message
+    runApp(SentryWidget(child: MyApp()));
+  });
+    }
+else{
+  runApp(MyApp());
+}
 
-  // runApp(MyApp());
+
 }

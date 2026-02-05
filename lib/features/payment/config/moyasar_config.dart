@@ -22,8 +22,8 @@ class MoyasarConfig {
   /// Secret API Key (NEVER expose in client code!)
   /// Used for: Backend webhook verification, refunds, captures
   /// This should ONLY be on your ASP.NET server
-  static const String secretKey =
-      'sk_test_YOUR_SECRET_KEY_HERE'; // DON'T USE IN FLUTTER!
+  // static const String secretKey =
+  //     'sk_test_YOUR_SECRET_KEY_HERE'; // DON'T USE IN FLUTTER!
 
   // ======================== Environment ========================
 
