@@ -346,16 +346,11 @@ const Map<String, String> arSA = {
   'validation_password_required': 'كلمة المرور مطلوبة',
   'validation_password_min_length': 'يجب أن تكون كلمة المرور 6 أحرف على الأقل',
   'validation_password_max_length': 'يجب ألا تتجاوز كلمة المرور 100 حرف',
-  'validation_password_strong_required':
-      'يجب أن تكون كلمة المرور 8 أحرف على الأقل',
-  'validation_password_uppercase':
-      'يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل',
-  'validation_password_lowercase':
-      'يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل',
-  'validation_password_number':
-      'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل',
-  'validation_password_special':
-      'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل',
+  'validation_password_strong_required':'يجب أن تكون كلمة المرور 8 أحرف على الأقل',
+  'validation_password_uppercase': 'يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل',
+  'validation_password_lowercase':'يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل',
+  'validation_password_number': 'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل',
+  'validation_password_special':'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل',
   'validation_confirm_password_required': 'يرجى تأكيد كلمة المرور',
   'validation_passwords_not_match': 'كلمات المرور غير متطابقة',
   'validation_otp_required': 'رمز التحقق مطلوب',
@@ -366,7 +361,7 @@ const Map<String, String> arSA = {
   'validation_numeric_required': 'يجب أن يكون هذا الحقل رقماً صحيحاً',
   'validation_url_required': 'الرابط مطلوب',
   'validation_url_invalid': 'يرجى إدخال رابط صحيح',
-
+  'validation_passwords_or_phon_not_match': "هناك خطآ في كلمة المرور او رقم الجوال ",
   // ==================== Authentication Error Messages ====================
   'cache_error': 'حدث خطأ في التخزين',
   'parsing_error': 'حدث خطأ في تحليل البيانات',
@@ -388,6 +383,8 @@ const Map<String, String> arSA = {
   'last_name_required': 'اسم العائلة مطلوب',
   'confirm_password_required': 'تأكيد كلمة المرور مطلوب',
   'invalid_phone_format': 'يرجى إدخال رقم هاتف سعودي صحيح (05xxxxxxxx)',
+
+  'invalid_phone_alreadesit': 'هذا الدقم مسجل من قبل فقط قم بتسجيل الدخول ',
   'weak_password':
       'يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل مع أحرف كبيرة وصغيرة ورقم ورمز خاص',
   'password_confirmation_mismatch': 'تأكيد كلمة المرور غير متطابق',

@@ -363,6 +363,7 @@ const Map<String, String> enUS = {
       'Password must contain at least one special character',
   'validation_confirm_password_required': 'Please confirm your password',
   'validation_passwords_not_match': 'Passwords do not match',
+    'validation_passwords_or_phon_not_match': "Invalid phone number or password",
   'validation_otp_required': 'OTP code is required',
   'validation_otp_format': 'OTP code must be exactly 6 digits',
   'validation_field_required': 'This field is required',
@@ -395,6 +396,8 @@ const Map<String, String> enUS = {
   'confirm_password_required': 'Password confirmation is required',
   'invalid_phone_format':
       'Please enter a valid Saudi phone number (05xxxxxxxx)',
+        'invalid_phone_alreadesit':
+      'Phone number already registered',
   'weak_password':
       'Password must contain at least 8 characters with uppercase, lowercase, number and special character',
   'password_confirmation_mismatch': 'Password confirmation does not match',

@@ -70,16 +70,13 @@ class AuthInterceptor {
     // Handle 401 Unauthorized responses
     if (response.statusCode == 401) {
       final url = response.request?.url.toString() ?? '';
-
       // Check if this endpoint should not trigger token refresh
       if (_shouldSkipRefresh(url)) {
         await _handleAuthenticationFailure(response);
         return;
       }
-
       // Attempt token refresh and retry
       final newToken = await _attemptTokenRefresh();
-
       if (newToken != null) {
         // Token refresh successful, retry the original request
         await _retryOriginalRequest(response, newToken);
@@ -139,7 +136,7 @@ class AuthInterceptor {
           )
           .timeout(Duration(milliseconds: ApiConstants.connectionTimeout));
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200) { 
         final responseData = jsonDecode(response.body);
 
         if (responseData['success'] == true && responseData['data'] != null) {

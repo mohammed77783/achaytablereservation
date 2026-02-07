@@ -323,7 +323,9 @@ class ApiClient {
 
       try {
         return jsonDecode(response.body);
-      } catch (e) {
+      } catch 
+      (e)
+       {
         throw ParsingException('Failed to parse response: $e');
       }
     }

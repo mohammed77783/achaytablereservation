@@ -131,7 +131,13 @@ class ErrorHandler {
   static String _getValidationErrorMessage(ValidationFailure failure) {
     final message = failure.message.toLowerCase();
     if (message.contains('phone')) {
-      return 'invalid_phone_format'.tr;
+      if (message.contains("already")) {
+        return "invalid_phone_alreadesit".tr;
+      } else if (message.contains('number or password')) {
+      return  "validation_passwords_or_phon_not_match".tr;
+      } else {
+        return 'invalid_phone_format'.tr;
+      }
     } else if (message.contains('password')) {
       if (message.contains('weak') || message.contains('strength')) {
         return 'weak_password'.tr;
@@ -219,7 +225,6 @@ class ErrorHandler {
 
     for (final error in errors) {
       final lowerError = error.toLowerCase();
-
       // Common field mappings
       if (lowerError.contains('first name') ||
           lowerError.contains('firstname')) {
@@ -255,7 +260,6 @@ class ErrorHandler {
           break;
       }
     }
-
     return fieldErrors;
   }
 

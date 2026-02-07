@@ -154,6 +154,8 @@ class PaymentController extends GetxController {
   }
 
   void _initializeMoyasarConfig() {
+    print("");
+
     _moyasarConfig = moyasar.PaymentConfig(
       publishableApiKey: MoyasarConfig.publishableKey,
       amount: MoyasarConfig.toHalalas(totalPrice.value),
