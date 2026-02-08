@@ -62,8 +62,8 @@ class BookingsPage extends GetView<BookingsController> {
 
   Widget _buildLoadingState(BuildContext context, bool isDark) {
     return Center(
-      child: CircularProgressIndicator(
-        color: isDark ? DarkTheme.secondaryColor : LightTheme.secondaryColor,
+      child: const CircularProgressIndicator(
+        color: Colors.black,
       ),
     );
   }

@@ -13,8 +13,11 @@ if (keystorePropertiesFile.exists()) {
 }
 android {
     namespace = "com.achay.achaytablereservation"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 36
+    ndkVersion = "28.2.13676358"
+    packaging {
+        jniLibs { useLegacyPackaging = false } // uncompressed .so for proper 16KB zip alignment
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -27,7 +30,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.achay.achaytablereservationapp"
+        applicationId = "com.achay.achaytablereservation"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -56,10 +59,7 @@ android {
 }
 dependencies {
     // Add language package you need to use
-    implementation("com.google.mlkit:text-recognition-chinese:16.0.0")
-    implementation("com.google.mlkit:text-recognition-devanagari:16.0.0")
-    implementation("com.google.mlkit:text-recognition-japanese:16.0.0")
-    implementation("com.google.mlkit:text-recognition-korean:16.0.0")
+
 }
 flutter {
     source = "../.."

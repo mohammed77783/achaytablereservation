@@ -405,11 +405,9 @@ class ReservationConfirmationpage
                 child: SizedBox(
                   width: 24,
                   height: 24,
-                  child: CircularProgressIndicator(
+                  child: const CircularProgressIndicator(
                     strokeWidth: 2,
-                    color: isDark
-                        ? DarkTheme.secondaryColor
-                        : LightTheme.primaryColor,
+                    color: Colors.black,
                   ),
                 ),
               ),

@@ -43,7 +43,7 @@ class BranchInfoPage extends GetView<BranchInfoController> {
 
     if (branch == null) {
       return Center(
-        child: CircularProgressIndicator(color: LightTheme.secondaryColor),
+        child: const CircularProgressIndicator(color: Colors.black),
       );
     }
 

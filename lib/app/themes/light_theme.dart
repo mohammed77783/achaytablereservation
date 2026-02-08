@@ -1,59 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// Light theme configuration based on Navy + Mint design system
-/// Professional Navy with fresh Mint accents
+/// Light theme configuration based on Warm Beige (#EAC7A0) design system
+/// Warm beige tones with black text for elegant contrast
 class LightTheme {
-  // Primary Navy - for buttons, headers, key interactive elements
-  static const Color primaryColor = Color(0xFF1A2332);
-  static const Color primaryLight = Color(0xFF2A3442);
-  static const Color primaryDark = Color(0xFF0F1419);
-  
-  // Mint Accent - for selected states and highlights
-  static const Color secondaryColor = Color(0xFF7DD3C0);
-  static const Color secondaryLight = Color(0xFF9DDDD0);
-  static const Color secondaryDark = Color(0xFF5DC9B0);
-  
-  // Accent Color (using mint as primary accent)
-  static const Color accentColor = Color(0xFF7DD3C0);
-  static const Color accentLight = Color(0xFF9DDDD0);
-  
-  // Background Colors - clean whites and light grays
-  static const Color backgroundColor = Color(0xFFF8F9FA);
-  static const Color surfaceColor = Color(0xFFFFFFFF);
-  static const Color cardBackground = Color(0xFFFFFFFF);
-  static const Color surfaceGray = Color(0xFFF1F3F4);
-  
-  // Text Colors - high contrast for readability
-  static const Color textPrimary = Color(0xFF202124);
-  static const Color textSecondary = Color(0xFF5F6368);
-  static const Color textHint = Color(0xFF9AA0A6);
-  static const Color textOnPrimary = Color(0xFFFFFFFF);
-  static const Color textOnSecondary = Color(0xFF1A2332);
-  
+  // Primary Warm Beige (darker) - for buttons, headers, key interactive elements
+  static const Color primaryColor = Color(0xFF6B5030);
+  static const Color primaryLight = Color(0xFF8B6B3E);
+  static const Color primaryDark = Color(0xFF4A3520);
+
+  // Secondary - darker derivatives for selected states and highlights
+  static const Color secondaryColor = Color(0xFF6B5030);
+  static const Color secondaryLight = Color(0xFF8B6B3E);
+  static const Color secondaryDark = Color(0xFF4A3520);
+
+  // Accent Color (warm beige derivative)
+  static const Color accentColor = Color(0xFF6B5030);
+  static const Color accentLight = Color(0xFF8B6B3E);
+
+  // Background Colors - warm cream/beige
+  static const Color backgroundColor = Color(0xFFE8DDD0);
+  static const Color surfaceColor = Color(0xFFF0E6DA);
+  static const Color cardBackground = Color(0xFFF5EDE3);
+  static const Color surfaceGray = Color(0xFFE0D4C6);
+
+  // Text Colors - black for readability
+  static const Color textPrimary = Color(0xFF000000);
+  static const Color textSecondary = Color(0xFF333333);
+  static const Color textHint = Color(0xFF999999);
+  static const Color textOnPrimary = Color(0xFF000000);
+  static const Color textOnSecondary = Color(0xFF000000);
+
   // Status Colors
   static const Color successColor = Color(0xFF137333);
   static const Color errorColor = Color(0xFFD93025);
   static const Color warningColor = Color(0xFFEA8600);
   static const Color infoColor = Color(0xFF1A73E8);
-  
+
   // Border & Divider
-  static const Color borderColor = Color(0xFFE8EAED);
-  static const Color dividerColor = Color(0xFFE8EAED);
-  static const Color inputBorder = Color(0xFFE8EAED);
-  static const Color inputFocusBorder = Color(0xFF1A2332);
-  
+  static const Color borderColor = Color(0xFFE8DCCF);
+  static const Color dividerColor = Color(0xFFE8DCCF);
+  static const Color inputBorder = Color(0xFFE8DCCF);
+  static const Color inputFocusBorder = Color(0xFFC9A070);
+
   // Shadow
-  static const Color shadowColor = Color(0x1A202124);
-  static const Color shadowLight = Color(0x0D202124);
-  
+  static const Color shadowColor = Color(0x1A000000);
+  static const Color shadowLight = Color(0x0D000000);
+
   // Spacing Constants
   static const double spacingXSmall = 4.0;
   static const double spacingSmall = 8.0;
   static const double spacingMedium = 16.0;
   static const double spacingLarge = 24.0;
   static const double spacingXLarge = 32.0;
-  
+
   // Sizing Constants
   static const double iconSizeSmall = 16.0;
   static const double iconSizeMedium = 24.0;
@@ -204,10 +204,7 @@ class LightTheme {
             borderRadius: BorderRadius.circular(borderRadius),
           ),
           elevation: 0,
-          textStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
 
@@ -220,10 +217,7 @@ class LightTheme {
             borderRadius: BorderRadius.circular(borderRadius),
           ),
           side: const BorderSide(color: primaryColor, width: 1.5),
-          textStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
 
@@ -231,10 +225,7 @@ class LightTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: primaryColor,
-          textStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
+          textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
       ),
 
@@ -275,10 +266,7 @@ class LightTheme {
         backgroundColor: surfaceGray,
         selectedColor: secondaryColor,
         disabledColor: borderColor,
-        labelStyle: const TextStyle(
-          fontSize: 14,
-          color: textPrimary,
-        ),
+        labelStyle: const TextStyle(fontSize: 14, color: textPrimary),
         secondaryLabelStyle: const TextStyle(
           fontSize: 14,
           color: textOnSecondary,
@@ -297,9 +285,7 @@ class LightTheme {
       bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: surfaceColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(20),
-          ),
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
         showDragHandle: true,
         dragHandleColor: dividerColor,
@@ -335,36 +321,31 @@ class LightTheme {
           return surfaceColor;
         }),
         checkColor: WidgetStateProperty.all(textOnPrimary),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         side: const BorderSide(color: borderColor, width: 1.5),
       ),
 
-      // Progress Indicator Theme
+      // Progress Indicator Theme - black loading
       progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: secondaryColor,
+        color: Color(0xFF000000),
         linearTrackColor: dividerColor,
       ),
 
       // Floating Action Button Theme
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: secondaryColor,
-        foregroundColor: textOnSecondary,
+        backgroundColor: primaryColor,
+        foregroundColor: textOnPrimary,
         elevation: 4,
       ),
 
       // Icon Theme
-      iconTheme: const IconThemeData(
-        color: textPrimary,
-        size: iconSizeMedium,
-      ),
+      iconTheme: const IconThemeData(color: textPrimary, size: iconSizeMedium),
 
-      // Bottom Navigation Bar
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      // Bottom Navigation Bar - black background with white icons
+      bottomNavigationBarTheme:  BottomNavigationBarThemeData(
         backgroundColor: surfaceColor,
-        selectedItemColor: secondaryColor,
-        unselectedItemColor: textSecondary,
+        selectedItemColor: Color(0xFF000000),
+        unselectedItemColor: Color(0xFF666666),
         type: BottomNavigationBarType.fixed,
         elevation: 8,
       ),

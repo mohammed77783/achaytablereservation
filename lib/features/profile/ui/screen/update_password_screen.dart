@@ -120,7 +120,7 @@ class ChangePhoneScreen extends GetView<ChangePhoneController> {
                           width: 20,
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         )
                       : const Text('إرسال رمز التحقق'),
@@ -248,7 +248,7 @@ class ChangePhoneScreen extends GetView<ChangePhoneController> {
                           width: 20,
                           child: CircularProgressIndicator(
                             strokeWidth: 2,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         )
                       : const Text('تأكيد'),

@@ -681,11 +681,9 @@ class PaymentConfirmationDialog extends StatelessWidget {
                         SizedBox(
                           width: 20,
                           height: 20,
-                          child: CircularProgressIndicator(
+                          child: const CircularProgressIndicator(
                             strokeWidth: 2.5,
-                            color: isDark
-                                ? DarkTheme.textOnSecondary
-                                : LightTheme.textOnPrimary,
+                            color: Colors.black,
                           ),
                         ),
                         SizedBox(width: ResponsiveUtils.spacing(context, 12.0)),

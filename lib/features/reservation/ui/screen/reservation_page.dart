@@ -26,10 +26,8 @@ class ReservationPage extends GetView<ReservationController> {
         // Show initial loading state
         if (controller.isInitialLoading.value) {
           return Center(
-            child: CircularProgressIndicator(
-              color: isDark
-                  ? DarkTheme.secondaryColor
-                  : LightTheme.secondaryColor,
+            child: const CircularProgressIndicator(
+              color: Colors.black,
             ),
           );
         }

@@ -2,7 +2,6 @@ import 'package:achaytablereservation/features/setupfeature/logic/splash_screen_
 import 'package:achaytablereservation/core/assets/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -13,15 +12,15 @@ class SplashScreen extends StatelessWidget {
     // Get the controller
     final controller = Get.find<SplashScreenController>();
 
-    // Navy & Mint Palette
-    const Color primaryNavy = Color(0xFF1A2332);
-    const Color mintAccent = Color(0xFF7DD3C0);
-    const Color backgroundLight = Color(0xFFF8F9FA);
-    const Color textPrimary = Color(0xFF202124);
-    const Color textSecondary = Color(0xFF5F6368);
+    // Get theme colors dynamically
+    final theme = Theme.of(context);
+    final primaryColor = theme.primaryColor;
+    final backgroundColor = theme.scaffoldBackgroundColor;
+    final surfaceColor = theme.colorScheme.surface;
+    final textColor = theme.textTheme.bodyLarge?.color ?? Colors.black;
 
     return Scaffold(
-      backgroundColor: backgroundLight,
+      backgroundColor: backgroundColor,
       body: Stack(
         children: [
           // Background subtle decoration
@@ -33,11 +32,11 @@ class SplashScreen extends StatelessWidget {
                 Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: surfaceColor,
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: primaryNavy.withValues(alpha: 0.15),
+                            color: primaryColor.withValues(alpha: 0.15),
                             blurRadius: 30,
                             offset: const Offset(0, 10),
                           ),
@@ -57,44 +56,42 @@ class SplashScreen extends StatelessWidget {
 
                 const SizedBox(height: 32),
 
-                // Title
-                Text(
-                      "TeaBake".tr,
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: textPrimary,
-                        height: 1.2,
-                      ),
-                    )
-                    .animate()
-                    .fadeIn(delay: 400.ms, duration: 600.ms)
-                    .slideY(begin: 0.3, end: 0, curve: Curves.easeOut),
-
+                // // Title
+                // Text(
+                //       "TeaBake".tr,
+                //       style: GoogleFonts.playfairDisplay(
+                //         fontSize: 36,
+                //         fontWeight: FontWeight.bold,
+                //         color: textPrimary,
+                //         height: 1.2,
+                //       ),
+                //     )
+                //     .animate()
+                //     .fadeIn(delay: 400.ms, duration: 600.ms)
+                //     .slideY(begin: 0.3, end: 0, curve: Curves.easeOut),
                 const SizedBox(height: 12),
 
-                // Subtitle
-                Text(
-                      "distancedont".tr,
-                      style: GoogleFonts.lato(
-                        fontSize: 16,
-                        color: textSecondary,
-                        letterSpacing: 1.2,
-                      ),
-                    )
-                    .animate()
-                    .fadeIn(delay: 600.ms, duration: 600.ms)
-                    .slideY(begin: 0.2, end: 0, curve: Curves.easeOut),
-
+                // // Subtitle
+                // Text(
+                //       "distancedont".tr,
+                //       style: GoogleFonts.lato(
+                //         fontSize: 16,
+                //         color: textSecondary,
+                //         letterSpacing: 1.2,
+                //       ),
+                //     )
+                //     .animate()
+                //     .fadeIn(delay: 600.ms, duration: 600.ms)
+                //     .slideY(begin: 0.2, end: 0, curve: Curves.easeOut),
                 const SizedBox(height: 40),
 
-                // Status message
-                Obx(
-                  () => Text(
-                    controller.currentStatus,
-                    style: GoogleFonts.lato(fontSize: 14, color: textSecondary),
-                  ).animate().fadeIn(delay: 800.ms),
-                ),
+                // // Status message
+                // Obx(
+                //   () => Text(
+                //     controller.currentStatus,
+                //     style: GoogleFonts.lato(fontSize: 14, color: textSecondary),
+                //   ).animate().fadeIn(delay: 800.ms),
+                // ),
               ],
             ),
           ),
@@ -111,15 +108,15 @@ class SplashScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.error_outline,
-                        color: Colors.red.withValues(alpha: 0.7),
+                        color: theme.colorScheme.error.withValues(alpha: 0.7),
                         size: 32,
                       ),
                       const SizedBox(height: 8),
                       ElevatedButton(
                         onPressed: controller.retryInitialization,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: mintAccent,
-                          foregroundColor: Colors.white,
+                          backgroundColor: primaryColor,
+                          foregroundColor: theme.colorScheme.onPrimary,
                         ),
                         child: const Text('Retry'),
                       ),
@@ -130,7 +127,7 @@ class SplashScreen extends StatelessWidget {
                     width: 24,
                     height: 24,
                     child: CircularProgressIndicator(
-                      color: mintAccent.withValues(alpha: 0.5),
+                      color: textColor.withValues(alpha: 0.5),
                       strokeWidth: 2,
                     ),
                   );

@@ -5,14 +5,7 @@ import 'package:achaytablereservation/features/authentication/logic/sign_in_cont
 import 'package:achaytablereservation/features/authentication/logic/auth_validators.dart';
 import 'package:achaytablereservation/app/routes/app_routes.dart';
 
-/// Color constants for modern design
-class AppColors {
-  static const primaryNavy = Color(0xFF1A2332);
-  static const mintAccent = Color(0xFF7DD3C0);
-  static const backgroundLight = Color(0xFFF8F9FA);
-  static const textPrimary = Color(0xFF202124);
-  static const textSecondary = Color(0xFF5F6368);
-}
+import 'package:achaytablereservation/app/themes/light_theme.dart';
 
 /// Registration screen using StatefulWidget with GetX controller
 class SignUpPage extends StatefulWidget {
@@ -86,12 +79,12 @@ class _SignUpPageState extends State<SignUpPage> {
     );
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
+      backgroundColor: LightTheme.backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: AppColors.textPrimary),
+          icon: Icon(Icons.arrow_back_ios, color: LightTheme.textPrimary),
           onPressed: () {
             controller.clearErrors();
             Get.back();
@@ -119,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   style: TextStyle(
                     fontSize: context.fontSize(28),
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
+                    color: LightTheme.textPrimary,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -128,7 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   'sign_up_subtitle'.tr,
                   style: TextStyle(
                     fontSize: context.fontSize(14),
-                    color: AppColors.textSecondary,
+                    color: LightTheme.textSecondary,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -260,10 +253,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         ? null
                         : () => _handleRegistration(btnController),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primaryNavy,
-                      foregroundColor: Colors.white,
-                      disabledBackgroundColor: AppColors.primaryNavy
-                          .withOpacity(0.6),
+                      backgroundColor: LightTheme.primaryColor,
+                      foregroundColor: LightTheme.textOnPrimary,
+                      disabledBackgroundColor: LightTheme.primaryColor
+                          .withValues(alpha: 0.6),
                       padding: EdgeInsets.symmetric(
                         vertical: context.spacing(16),
                       ),
@@ -278,10 +271,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         ? SizedBox(
                             height: context.spacing(20),
                             width: context.spacing(20),
-                            child: const CircularProgressIndicator(
+                            child: CircularProgressIndicator(
                               strokeWidth: 2,
                               valueColor: AlwaysStoppedAnimation<Color>(
-                                Colors.white,
+                                LightTheme.textOnPrimary,
                               ),
                             ),
                           )
@@ -303,7 +296,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     Text(
                       'already_have_account'.tr,
                       style: TextStyle(
-                        color: AppColors.textSecondary,
+                        color: LightTheme.textSecondary,
                         fontSize: context.fontSize(14),
                       ),
                     ),
@@ -313,7 +306,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         'sign_in'.tr,
                         style: TextStyle(
-                          color: AppColors.mintAccent,
+                          color: LightTheme.accentColor,
                           fontSize: context.fontSize(14),
                           fontWeight: FontWeight.w600,
                         ),
@@ -360,45 +353,44 @@ class _SignUpPageState extends State<SignUpPage> {
         },
         style: TextStyle(
           fontSize: context.fontSize(14),
-          color: AppColors.textPrimary,
+          color: LightTheme.textPrimary,
         ),
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
           labelStyle: TextStyle(
             fontSize: context.fontSize(14),
-            color: AppColors.textSecondary,
+            color: LightTheme.textSecondary,
           ),
           hintStyle: TextStyle(
             fontSize: context.fontSize(14),
-            color: AppColors.textSecondary.withOpacity(0.6),
+            color: LightTheme.textHint,
           ),
           prefixIcon: Icon(
             prefixIcon,
-            color: AppColors.mintAccent,
+            color: LightTheme.accentColor,
             size: context.spacing(20),
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: LightTheme.surfaceColor,
           contentPadding: EdgeInsets.symmetric(
             horizontal: context.spacing(16),
             vertical: context.spacing(16),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: BorderSide(
-              color: AppColors.textSecondary.withOpacity(0.3),
-            ),
+            borderSide: BorderSide(color: LightTheme.inputBorder),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: BorderSide(
-              color: AppColors.textSecondary.withOpacity(0.3),
-            ),
+            borderSide: BorderSide(color: LightTheme.inputBorder),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: const BorderSide(color: AppColors.mintAccent, width: 2),
+            borderSide: const BorderSide(
+              color: LightTheme.inputFocusBorder,
+              width: 2,
+            ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
@@ -447,61 +439,63 @@ class _SignUpPageState extends State<SignUpPage> {
         onFieldSubmitted: onFieldSubmitted,
         style: TextStyle(
           fontSize: context.fontSize(14),
-          color: AppColors.textPrimary,
+          color: LightTheme.textPrimary,
         ),
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
           labelStyle: TextStyle(
             fontSize: context.fontSize(14),
-            color: AppColors.textSecondary,
+            color: LightTheme.textSecondary,
           ),
           hintStyle: TextStyle(
             fontSize: context.fontSize(14),
-            color: AppColors.textSecondary.withOpacity(0.6),
+            color: LightTheme.textHint,
           ),
           prefixIcon: Icon(
             Icons.lock,
-            color: AppColors.mintAccent,
+            color: LightTheme.accentColor,
             size: context.spacing(20),
           ),
           suffixIcon: IconButton(
             icon: Icon(
               obscureValue.value ? Icons.visibility_off : Icons.visibility,
-              color: AppColors.textSecondary,
+              color: LightTheme.textSecondary,
               size: context.spacing(20),
             ),
             onPressed: () => obscureValue.value = !obscureValue.value,
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: LightTheme.surfaceColor,
           contentPadding: EdgeInsets.symmetric(
             horizontal: context.spacing(16),
             vertical: context.spacing(16),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: BorderSide(
-              color: AppColors.textSecondary.withOpacity(0.3),
-            ),
+            borderSide: BorderSide(color: LightTheme.inputBorder),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: BorderSide(
-              color: AppColors.textSecondary.withOpacity(0.3),
-            ),
+            borderSide: BorderSide(color: LightTheme.inputBorder),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: const BorderSide(color: AppColors.mintAccent, width: 2),
+            borderSide: const BorderSide(
+              color: LightTheme.inputFocusBorder,
+              width: 2,
+            ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: const BorderSide(color: Colors.red),
+            borderSide: const BorderSide(color: LightTheme.errorColor),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(context.spacing(12)),
-            borderSide: const BorderSide(color: Colors.red, width: 2),
+            borderSide: const BorderSide(
+              color: LightTheme.errorColor,
+              width: 2,
+            ),
           ),
           errorStyle: TextStyle(fontSize: context.fontSize(12)),
         ),

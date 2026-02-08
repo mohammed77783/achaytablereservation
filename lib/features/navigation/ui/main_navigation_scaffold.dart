@@ -90,15 +90,9 @@ class MainNavigationScaffold extends StatelessWidget {
                           .cardBackground // Slightly lighter than surface for better depth
                     : LightTheme.surfaceColor,
 
-                // Updated Selection Colors (Will reflect your new secondaryColor)
-                selectedItemColor: isDark
-                    ? DarkTheme.secondaryColor
-                    : LightTheme
-                          .primaryColor, // Often looks better to use Primary in Light Mode
-
-                unselectedItemColor: isDark
-                    ? DarkTheme.textSecondary.withOpacity(0.5)
-                    : LightTheme.textSecondary.withOpacity(0.6),
+                // Black icons and labels for navigation bar
+                selectedItemColor: Colors.black,
+                unselectedItemColor: Colors.black.withValues(alpha: 0.6),
 
                 selectedFontSize: ResponsiveUtils.fontSize(context, 12),
                 unselectedFontSize: ResponsiveUtils.fontSize(context, 10),

@@ -48,9 +48,9 @@ class PrimaryButton extends StatelessWidget {
             ? SizedBox(
                 width: LightTheme.iconSizeMedium,
                 height: LightTheme.iconSizeMedium,
-                child: CircularProgressIndicator(
+                child: const CircularProgressIndicator(
                   strokeWidth: 2,
-                  color: LightTheme.textOnPrimary,
+                  color: Colors.black,
                 ),
               )
             : Row(

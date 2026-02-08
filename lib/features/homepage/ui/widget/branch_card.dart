@@ -111,10 +111,8 @@ class BranchCard extends StatelessWidget {
                       ? DarkTheme.surfaceGray
                       : LightTheme.surfaceGray,
                   child: Center(
-                    child: CircularProgressIndicator(
-                      color: isDark
-                          ? DarkTheme.secondaryColor
-                          : LightTheme.secondaryColor,
+                    child: const CircularProgressIndicator(
+                      color: Colors.black,
                       strokeWidth: 2,
                     ),
                   ),
@@ -333,59 +331,59 @@ class BranchCard extends StatelessWidget {
               ),
 
               // Rating badge
-              Positioned(
-                top: context.spacing(
-                  isDark ? DarkTheme.spacingMedium : LightTheme.spacingMedium,
-                ),
-                left: isArabic
-                    ? null
-                    : context.spacing(
-                        isDark
-                            ? DarkTheme.spacingMedium
-                            : LightTheme.spacingMedium,
-                      ),
-                right: isArabic
-                    ? context.spacing(
-                        isDark
-                            ? DarkTheme.spacingMedium
-                            : LightTheme.spacingMedium,
-                      )
-                    : null,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: context.spacing(
-                      isDark
-                          ? DarkTheme.spacingMedium
-                          : LightTheme.spacingMedium,
-                    ),
-                    vertical: context.spacing(
-                      isDark
-                          ? DarkTheme.spacingXSmall
-                          : LightTheme.spacingXSmall,
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    color:
-                        (isDark
-                                ? DarkTheme.primaryColor
-                                : LightTheme.primaryColor)
-                            .withValues(alpha: 0.9),
-                    borderRadius: BorderRadius.circular(
-                      isDark ? DarkTheme.borderRadius : LightTheme.borderRadius,
-                    ),
-                  ),
-                  child: Text(
-                    '${branch.totalReviews} ${isArabic ? 'تقييم' : 'reviews'}',
-                    style: TextStyle(
-                      fontFamily: 'Cairo',
-                      fontSize: context.fontSize(12),
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+            //   Positioned(
+            //     top: context.spacing(
+            //       isDark ? DarkTheme.spacingMedium : LightTheme.spacingMedium,
+            //     ),
+            //     left: isArabic
+            //         ? null
+            //         : context.spacing(
+            //             isDark
+            //                 ? DarkTheme.spacingMedium
+            //                 : LightTheme.spacingMedium,
+            //           ),
+            //     right: isArabic
+            //         ? context.spacing(
+            //             isDark
+            //                 ? DarkTheme.spacingMedium
+            //                 : LightTheme.spacingMedium,
+            //           )
+            //         : null,
+            //     child: Container(
+            //       padding: EdgeInsets.symmetric(
+            //         horizontal: context.spacing(
+            //           isDark
+            //               ? DarkTheme.spacingMedium
+            //               : LightTheme.spacingMedium,
+            //         ),
+            //         vertical: context.spacing(
+            //           isDark
+            //               ? DarkTheme.spacingXSmall
+            //               : LightTheme.spacingXSmall,
+            //         ),
+            //       ),
+            //       decoration: BoxDecoration(
+            //         color:
+            //             (isDark
+            //                     ? DarkTheme.primaryColor
+            //                     : LightTheme.primaryColor)
+            //                 .withValues(alpha: 0.9),
+            //         borderRadius: BorderRadius.circular(
+            //           isDark ? DarkTheme.borderRadius : LightTheme.borderRadius,
+            //         ),
+            //       ),
+            //       child: Text(
+            //         '${branch.totalReviews} ${isArabic ? 'تقييم' : 'reviews'}',
+            //         style: TextStyle(
+            //           fontFamily: 'Cairo',
+            //           fontSize: context.fontSize(12),
+            //           fontWeight: FontWeight.w600,
+            //           color: Colors.white,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            ]
           ),
         ),
       ),

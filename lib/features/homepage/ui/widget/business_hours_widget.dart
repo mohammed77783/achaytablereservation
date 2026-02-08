@@ -118,7 +118,7 @@ class BusinessHoursWidget extends StatelessWidget {
           ResponsiveUtils.spacing(context, LightTheme.spacingMedium),
         ),
         child: const Center(
-          child: CircularProgressIndicator(color: LightTheme.secondaryColor),
+          child: CircularProgressIndicator(color: Colors.black),
         ),
       );
     }

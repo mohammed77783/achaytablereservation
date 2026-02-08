@@ -735,9 +735,9 @@ class PaymentPage extends StatelessWidget {
                 ? SizedBox(
                     width: context.fontSize(24),
                     height: context.fontSize(24),
-                    child: CircularProgressIndicator(
+                    child: const CircularProgressIndicator(
                       strokeWidth: 2,
-                      color: textOnPrimary,
+                      color: Colors.black,
                     ),
                   )
                 : Row(

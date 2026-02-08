@@ -184,8 +184,8 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CircularProgressIndicator(
-            color: isDark ? DarkTheme.primaryColor : LightTheme.primaryColor,
+          const CircularProgressIndicator(
+            color: Colors.black,
           ),
           SizedBox(
             height: context.spacing(
@@ -216,8 +216,8 @@ class HomePage extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: CircularProgressIndicator(
-          color: isDark ? DarkTheme.primaryColor : LightTheme.primaryColor,
+        child: const CircularProgressIndicator(
+          color: Colors.black,
         ),
       ),
     );

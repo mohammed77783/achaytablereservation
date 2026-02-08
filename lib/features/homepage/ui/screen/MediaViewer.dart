@@ -121,7 +121,7 @@ class _MediaViewerState extends State<MediaViewer> {
               imageUrl: item.fileUrl,
               fit: BoxFit.contain,
               placeholder: (context, url) =>
-                  CircularProgressIndicator(color: LightTheme.secondaryColor),
+                  const CircularProgressIndicator(color: Colors.black),
               errorWidget: (context, url, error) =>
                   Icon(Iconsax.image, color: LightTheme.textHint, size: 64),
             ),
