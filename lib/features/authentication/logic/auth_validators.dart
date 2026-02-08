@@ -164,32 +164,26 @@ class AuthValidators {
     required String? confirmPassword,
   }) {
     final errors = <String, String>{};
-
     final firstNameError = validateFirstName(firstName);
     if (firstNameError != null) {
       errors['firstName'] = firstNameError;
     }
-
     final lastNameError = validateLastName(lastName);
     if (lastNameError != null) {
       errors['lastName'] = lastNameError;
     }
-
     final phoneError = validateRegistrationPhoneNumber(phoneNumber);
     if (phoneError != null) {
       errors['phoneNumber'] = phoneError;
     }
-
     final emailError = validateRegistrationEmail(email);
     if (emailError != null) {
       errors['email'] = emailError;
     }
-
     final passwordError = validateRegistrationPassword(password);
     if (passwordError != null) {
       errors['password'] = passwordError;
     }
-
     final confirmPasswordError = validatePasswordConfirmation(
       password,
       confirmPassword,
@@ -197,7 +191,6 @@ class AuthValidators {
     if (confirmPasswordError != null) {
       errors['confirmPassword'] = confirmPasswordError;
     }
-
     return errors;
   }
 
