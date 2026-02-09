@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../../../app/routes/app_routes.dart';
+import '../../../app/themes/dark_theme.dart';
+import '../../../app/themes/light_theme.dart';
 import '../../../core/base/base_controller.dart';
 import '../../../core/services/storage_service.dart';
 
@@ -20,6 +24,15 @@ class MoreController extends BaseController {
   static const String supportPhone = '+966562760098';
   static const String supportWhatsApp = '+966562760098';
   static const String supportEmail = 'achaytea1@gmail..com';
+
+  // Terms & Conditions URLs
+  static const String termsUrlEn ='https://achay.com.sa/term&condition';
+  static const String termsUrlAr =
+      'https://achay.com.sa/term&condition-ar';
+
+  // Privacy Policy URLs
+  static const String privacyUrlEn = 'https://achay.com.sa/privacy';
+  static const String privacyUrlAr = 'https://achay.com.sa/privacy-ar';
 
   /// Make a phone call to support
   Future<void> callSupport() async {
@@ -69,14 +82,121 @@ class MoreController extends BaseController {
     }
   }
 
-  /// Navigate to Terms and Conditions page
+  bool get isArabic => Get.locale?.languageCode == 'ar';
+
+  /// Show Terms and Conditions in a WebView dialog
   void goToTermsAndConditions() {
-    Get.toNamed(AppRoutes.TERMS_CONDITIONS);
+    final String url = isArabic ? termsUrlAr : termsUrlEn;
+    _showWebViewDialog(
+      url: url,
+      title: isArabic ? 'الشروط والأحكام' : 'Terms & Conditions',
+      icon: Iconsax.document_text,
+    );
+  }
+
+  /// Show Privacy Policy in a WebView dialog
+  void goToPrivacyPolicy() {
+    final String url = isArabic ? privacyUrlAr : privacyUrlEn;
+    _showWebViewDialog(
+      url: url,
+      title: isArabic ? 'سياسة الخصوصية' : 'Privacy Policy',
+      icon: Iconsax.shield_tick,
+    );
   }
 
   /// Navigate to Settings page
   void goToSettings() {
     Get.toNamed(AppRoutes.SETTINGS);
+  }
+
+  /// Show a WebView dialog with the given URL and title
+  void _showWebViewDialog({
+    required String url,
+    required String title,
+    required IconData icon,
+  }) {
+    final webViewController = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(
+        Get.isDarkMode ? DarkTheme.backgroundColor : LightTheme.backgroundColor,
+      )
+      ..loadRequest(Uri.parse(url));
+
+    Get.dialog(
+      Dialog(
+        backgroundColor: Get.isDarkMode
+            ? DarkTheme.cardBackground
+            : LightTheme.cardBackground,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(LightTheme.borderRadiusLarge),
+        ),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: SizedBox(
+          width: double.maxFinite,
+          height: Get.height * 0.75,
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Get.isDarkMode
+                          ? DarkTheme.borderColor
+                          : LightTheme.borderColor,
+                    ),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      icon,
+                      color: Get.isDarkMode
+                          ? DarkTheme.secondaryColor
+                          : LightTheme.primaryColor,
+                      size: 24,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                          fontFamily: 'Cairo',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Get.isDarkMode
+                              ? DarkTheme.textPrimary
+                              : LightTheme.textPrimary,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => Get.back(),
+                      icon: Icon(
+                        Icons.close,
+                        color: Get.isDarkMode
+                            ? DarkTheme.textSecondary
+                            : LightTheme.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
+                  ),
+                  child: WebViewWidget(controller: webViewController),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: true,
+    );
   }
 
   /// Show logout confirmation dialog

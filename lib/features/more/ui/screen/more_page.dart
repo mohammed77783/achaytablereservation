@@ -192,9 +192,7 @@ class MorePage extends GetView<MoreController> {
                 : LightTheme.primaryColor,
             title: 'privacy_policy'.tr,
             isDark: isDark,
-            onTap: () {
-              // TODO: Navigate to privacy policy
-            },
+            onTap: () => controller.goToPrivacyPolicy(),
             showArrow: true,
           ),
         ],
