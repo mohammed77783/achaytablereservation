@@ -23,9 +23,14 @@ class AppConstants {
       'A Flutter application with clean architecture';
 
   static const String termsUrlEn =
-      'https://mohammed77783.github.io/achaytermandcondition/index';
+      'https://achay.com.sa/term&condition-ar.html';
   static const String termsUrlAr =
       'https://mohammed77783.github.io/achaytermandcondition/index-ar';
+
+
+  static const String privacyUrlEn ='https://achay.com.sa/privacy';
+  static const String privacyUrlAr =
+      'https://achay.com.sa/privacy-ar';
 
   // ==================== Default Settings ====================
 

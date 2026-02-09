@@ -17,9 +17,9 @@ class MoreController extends BaseController {
   final RxBool isLoggingOut = false.obs;
 
   // Support contact details - can be moved to config
-  static const String supportPhone = '+966500000000';
-  static const String supportWhatsApp = '+966500000000';
-  static const String supportEmail = 'support@aja.com';
+  static const String supportPhone = '+966562760098';
+  static const String supportWhatsApp = '+966562760098';
+  static const String supportEmail = 'achaytea1@gmail..com';
 
   /// Make a phone call to support
   Future<void> callSupport() async {
