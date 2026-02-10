@@ -5,47 +5,47 @@ import 'package:google_fonts/google_fonts.dart';
 /// Warm beige tones with black text for elegant contrast
 class LightTheme {
   // Primary Warm Beige (darker) - for buttons, headers, key interactive elements
-  static const Color primaryColor = Color(0xFF6B5030);
-  static const Color primaryLight = Color(0xFF8B6B3E);
-  static const Color primaryDark = Color(0xFF4A3520);
+  static const Color primaryColor = Color(0xFF4A3520);
+  static const Color primaryLight = Color(0xFF6B5030);
+  static const Color primaryDark = Color(0xFF332414);
 
   // Secondary - darker derivatives for selected states and highlights
-  static const Color secondaryColor = Color(0xFF6B5030);
-  static const Color secondaryLight = Color(0xFF8B6B3E);
-  static const Color secondaryDark = Color(0xFF4A3520);
+  static const Color secondaryColor = Color(0xFF4A3520);
+  static const Color secondaryLight = Color(0xFF6B5030);
+  static const Color secondaryDark = Color(0xFF332414);
 
   // Accent Color (warm beige derivative)
-  static const Color accentColor = Color(0xFF6B5030);
-  static const Color accentLight = Color(0xFF8B6B3E);
+  static const Color accentColor = Color(0xFF4A3520);
+  static const Color accentLight = Color(0xFF6B5030);
 
-  // Background Colors - warm cream/beige
-  static const Color backgroundColor = Color(0xFFE8DDD0);
-  static const Color surfaceColor = Color(0xFFF0E6DA);
-  static const Color cardBackground = Color(0xFFF5EDE3);
-  static const Color surfaceGray = Color(0xFFE0D4C6);
+  // Background Colors - light warm sandy beige
+  static const Color backgroundColor = Color(0xFFF5E1C8);
+  static const Color surfaceColor = Color(0xFFF5E1C8);
+  static const Color cardBackground = Color(0xFFFFF8EF);
+  static const Color surfaceGray = Color(0xFFEDD4B8);
 
-  // Text Colors - black for readability
-  static const Color textPrimary = Color(0xFF000000);
-  static const Color textSecondary = Color(0xFF333333);
-  static const Color textHint = Color(0xFF999999);
-  static const Color textOnPrimary = Color(0xFF000000);
-  static const Color textOnSecondary = Color(0xFF000000);
+  // Text Colors - dark brown/black for readability
+  static const Color textPrimary = Color(0xFF2C1810);
+  static const Color textSecondary = Color(0xFF5C4033);
+  static const Color textHint = Color(0xFF8B7355);
+  static const Color textOnPrimary = Color(0xFFFFF8EF);
+  static const Color textOnSecondary = Color(0xFFFFF8EF);
 
   // Status Colors
-  static const Color successColor = Color(0xFF137333);
-  static const Color errorColor = Color(0xFFD93025);
-  static const Color warningColor = Color(0xFFEA8600);
-  static const Color infoColor = Color(0xFF1A73E8);
+  static const Color successColor = Color(0xFF0E5C28);
+  static const Color errorColor = Color(0xFFB8271E);
+  static const Color warningColor = Color(0xFFC47200);
+  static const Color infoColor = Color(0xFF155CBB);
 
   // Border & Divider
-  static const Color borderColor = Color(0xFFE8DCCF);
-  static const Color dividerColor = Color(0xFFE8DCCF);
-  static const Color inputBorder = Color(0xFFE8DCCF);
-  static const Color inputFocusBorder = Color(0xFFC9A070);
+  static const Color borderColor = Color(0xFFE0C9A8);
+  static const Color dividerColor = Color(0xFFE0C9A8);
+  static const Color inputBorder = Color(0xFFE0C9A8);
+  static const Color inputFocusBorder = Color(0xFF8B6B3E);
 
   // Shadow
-  static const Color shadowColor = Color(0x1A000000);
-  static const Color shadowLight = Color(0x0D000000);
+  static const Color shadowColor = Color(0x33000000);
+  static const Color shadowLight = Color(0x1A000000);
 
   // Spacing Constants
   static const double spacingXSmall = 4.0;
@@ -89,7 +89,7 @@ class LightTheme {
 
       // App Bar
       appBarTheme: const AppBarTheme(
-        backgroundColor: surfaceColor,
+        backgroundColor: backgroundColor,
         foregroundColor: textPrimary,
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -105,7 +105,7 @@ class LightTheme {
       // Card
       cardTheme: CardThemeData(
         color: cardBackground,
-        elevation: 2,
+        elevation: 0,
         shadowColor: shadowColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadiusLarge),
@@ -325,9 +325,9 @@ class LightTheme {
         side: const BorderSide(color: borderColor, width: 1.5),
       ),
 
-      // Progress Indicator Theme - black loading
+      // Progress Indicator Theme
       progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: Color(0xFF000000),
+        color: primaryColor,
         linearTrackColor: dividerColor,
       ),
 
@@ -341,13 +341,13 @@ class LightTheme {
       // Icon Theme
       iconTheme: const IconThemeData(color: textPrimary, size: iconSizeMedium),
 
-      // Bottom Navigation Bar - black background with white icons
-      bottomNavigationBarTheme:  BottomNavigationBarThemeData(
-        backgroundColor: surfaceColor,
-        selectedItemColor: Color(0xFF000000),
-        unselectedItemColor: Color(0xFF666666),
+      // Bottom Navigation Bar
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: backgroundColor,
+        selectedItemColor: Color(0xFF2C1810),
+        unselectedItemColor: Color(0xFF8B7355),
         type: BottomNavigationBarType.fixed,
-        elevation: 8,
+        elevation: 0,
       ),
     );
   }

@@ -67,7 +67,6 @@ class DarkTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-
       // Color Scheme
       colorScheme: const ColorScheme.dark(
         primary: primaryColor,

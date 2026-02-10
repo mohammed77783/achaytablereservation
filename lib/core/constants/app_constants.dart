@@ -25,7 +25,7 @@ class AppConstants {
   static const String termsUrlEn =
       'https://achay.com.sa/term&condition-ar.html';
   static const String termsUrlAr =
-      'https://mohammed77783.github.io/achaytermandcondition/index-ar';
+      'https://achay.com.sa/term&condition.html';
 
 
   static const String privacyUrlEn ='https://achay.com.sa/privacy';
