@@ -1,0 +1,142 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/mohammedalkamle/Library/Developer/Xcode/DerivedData/Runner-biphaexbwhrhledvryretgznhrbx/Build/Intermediates.noindex/ArchiveIntermediates/Runner/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/sentry_flutter.framework/sentry_flutter'
+relocations:
+  - { offset: 0xACC51, size: 0x8, addend: 0x0, symName: _sentry_flutterVersionString, symObjAddr: 0x0, symBinAddr: 0x1A700, symSize: 0x0 }
+  - { offset: 0xACC86, size: 0x8, addend: 0x0, symName: _sentry_flutterVersionNumber, symObjAddr: 0x30, symBinAddr: 0x1A730, symSize: 0x0 }
+  - { offset: 0xACCC3, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter init]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x6C }
+  - { offset: 0xACD07, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter init]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x6C }
+  - { offset: 0xACD3E, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter convertFrom:]', symObjAddr: 0x6C, symBinAddr: 0x406C, symSize: 0x3F0 }
+  - { offset: 0xACD98, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter convertFrom:withCategory:andMessage:]', symObjAddr: 0x45C, symBinAddr: 0x445C, symSize: 0x14C }
+  - { offset: 0xACDA3, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter convertFrom:].cold.1', symObjAddr: 0xE08, symBinAddr: 0x19540, symSize: 0x28 }
+  - { offset: 0xACDBB, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter convertFrom:withCategory:andMessage:]', symObjAddr: 0x45C, symBinAddr: 0x445C, symSize: 0x14C }
+  - { offset: 0xACE1E, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter convertNetwork:]', symObjAddr: 0x5A8, symBinAddr: 0x45A8, symSize: 0x55C }
+  - { offset: 0xACEA5, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter dateFrom:]', symObjAddr: 0xB04, symBinAddr: 0x4B04, symSize: 0x38 }
+  - { offset: 0xACEE8, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter getTouchPathMessage:]', symObjAddr: 0xB3C, symBinAddr: 0x4B3C, symSize: 0x2C0 }
+  - { offset: 0xACFF0, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayBreadcrumbConverter .cxx_destruct]', symObjAddr: 0xDFC, symBinAddr: 0x4DFC, symSize: 0xC }
+  - { offset: 0xAD0E4, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayScreenshotProvider initWithChannel:]', symObjAddr: 0x0, symBinAddr: 0x4E08, symSize: 0x78 }
+  - { offset: 0xAD0FE, size: 0x8, addend: 0x0, symName: '___66-[SentryFlutterReplayScreenshotProvider imageWithView:onComplete:]_block_invoke', symObjAddr: 0x204, symBinAddr: 0x500C, symSize: 0x284 }
+  - { offset: 0xAD306, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32b, symObjAddr: 0x488, symBinAddr: 0x5290, symSize: 0x10 }
+  - { offset: 0xAD34D, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayScreenshotProvider initWithChannel:]', symObjAddr: 0x0, symBinAddr: 0x4E08, symSize: 0x78 }
+  - { offset: 0xAD394, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayScreenshotProvider imageWithView:onComplete:]', symObjAddr: 0x78, symBinAddr: 0x4E80, symSize: 0x18C }
+  - { offset: 0xAD4C1, size: 0x8, addend: 0x0, symName: '___66-[SentryFlutterReplayScreenshotProvider imageWithView:onComplete:]_block_invoke.cold.1', symObjAddr: 0x4AC, symBinAddr: 0x19568, symSize: 0x28 }
+  - { offset: 0xAD4D9, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32b, symObjAddr: 0x488, symBinAddr: 0x5290, symSize: 0x10 }
+  - { offset: 0xAD502, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s, symObjAddr: 0x498, symBinAddr: 0x52A0, symSize: 0x8 }
+  - { offset: 0xAD521, size: 0x8, addend: 0x0, symName: '-[SentryFlutterReplayScreenshotProvider .cxx_destruct]', symObjAddr: 0x4A0, symBinAddr: 0x52A8, symSize: 0xC }
+  - { offset: 0xAD71A, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterCACycfC', symObjAddr: 0x0, symBinAddr: 0x52B4, symSize: 0x10 }
+  - { offset: 0xAD7FF, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC018$__lazy_storage_$_aD033_491F737C4EFC5E801AEAEA4C4751A42DLLAA0cD0CSgvpfi', symObjAddr: 0x34, symBinAddr: 0x52E0, symSize: 0x8 }
+  - { offset: 0xAD914, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterCMa', symObjAddr: 0x1E64, symBinAddr: 0x70F4, symSize: 0x20 }
+  - { offset: 0xAD928, size: 0x8, addend: 0x0, symName: '_$sypWOc', symObjAddr: 0x1E84, symBinAddr: 0x7114, symSize: 0x3C }
+  - { offset: 0xAD93C, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledNameV2, symObjAddr: 0x1EC0, symBinAddr: 0x7150, symSize: 0x44 }
+  - { offset: 0xAD950, size: 0x8, addend: 0x0, symName: '_$sypSgWOh', symObjAddr: 0x1F04, symBinAddr: 0x7194, symSize: 0x48 }
+  - { offset: 0xAD964, size: 0x8, addend: 0x0, symName: '_$sSo8NSNumberCMa', symObjAddr: 0x1F4C, symBinAddr: 0x71DC, symSize: 0x44 }
+  - { offset: 0xAD978, size: 0x8, addend: 0x0, symName: '_$sypWOb', symObjAddr: 0x1F90, symBinAddr: 0x7220, symSize: 0x10 }
+  - { offset: 0xAD993, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterCACycfC', symObjAddr: 0x0, symBinAddr: 0x52B4, symSize: 0x10 }
+  - { offset: 0xAD9A7, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterCACycfc', symObjAddr: 0x10, symBinAddr: 0x52C4, symSize: 0x8 }
+  - { offset: 0xADB3C, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterC6update7options4withySo0C7OptionsC_SDySSypGtF', symObjAddr: 0x18, symBinAddr: 0x52CC, symSize: 0x4 }
+  - { offset: 0xADB60, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterCfD', symObjAddr: 0x24, symBinAddr: 0x52D0, symSize: 0x10 }
+  - { offset: 0xADB99, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterC12logLevelFrom33_F671EB0F1C25DA1B0D0AA5894043A194LL010diagnosticF00C00cF0OSS_tFTf4nd_n', symObjAddr: 0x58, symBinAddr: 0x52E8, symSize: 0x170 }
+  - { offset: 0xADD2C, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter13SentryFlutterC6update7options4withySo0C7OptionsC_SDySSypGtFTf4nnd_n', symObjAddr: 0x1C8, symBinAddr: 0x5458, symSize: 0x1C9C }
+  - { offset: 0xAEAAE, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC22pluginRegistrationTime33_491F737C4EFC5E801AEAEA4C4751A42DLLs5Int64VvpZ', symObjAddr: 0x108C8, symBinAddr: 0x26210, symSize: 0x0 }
+  - { offset: 0xAF46B, size: 0x8, addend: 0x0, symName: '_$syXlSgIeyBy_ypSgIegn_TR', symObjAddr: 0x1F04, symBinAddr: 0x9134, symSize: 0xF0 }
+  - { offset: 0xAF641, size: 0x8, addend: 0x0, symName: '_$sSo11SentryEventCABSgIeghgo_AbCIeyBhya_TR', symObjAddr: 0x3A50, symBinAddr: 0xAC80, symSize: 0x58 }
+  - { offset: 0xAF7C4, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginCfETo', symObjAddr: 0x4E94, symBinAddr: 0xC0C4, symSize: 0x58 }
+  - { offset: 0xAF7FE, size: 0x8, addend: 0x0, symName: '_$ss22__RawDictionaryStorageC4findys10_HashTableV6BucketV6bucket_Sb5foundtxSHRzlFSS_Tg5', symObjAddr: 0x4EEC, symBinAddr: 0xC11C, symSize: 0x64 }
+  - { offset: 0xAF82B, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV7_insert2at3key5valueys10_HashTableV6BucketV_xnq_ntFSS_ypTg5', symObjAddr: 0x4F50, symBinAddr: 0xC180, symSize: 0x68 }
+  - { offset: 0xAF8AF, size: 0x8, addend: 0x0, symName: '_$ss22__RawDictionaryStorageC4find_9hashValues10_HashTableV6BucketV6bucket_Sb5foundtx_SitSHRzlFSS_Tg5', symObjAddr: 0x4FB8, symBinAddr: 0xC1E8, symSize: 0xB4 }
+  - { offset: 0xAF927, size: 0x8, addend: 0x0, symName: '_$sSD8_VariantV11removeValue6forKeyq_Sgx_tFSS_ypTg5', symObjAddr: 0x506C, symBinAddr: 0xC29C, symSize: 0xD0 }
+  - { offset: 0xAF9D1, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV8setValue_6forKey8isUniqueyq_n_xSbtFSS_ypTg5', symObjAddr: 0x513C, symBinAddr: 0xC36C, symSize: 0x12C }
+  - { offset: 0xAFA5E, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV8setValue_6forKey8isUniqueyq_n_xSbtFSS_SSTg5', symObjAddr: 0x5268, symBinAddr: 0xC498, symSize: 0x164 }
+  - { offset: 0xAFB34, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV4copyyyFSS_ypTg5', symObjAddr: 0x53CC, symBinAddr: 0xC5FC, symSize: 0x1A0 }
+  - { offset: 0xAFBD1, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV4copyyyFSS_SSTg5', symObjAddr: 0x556C, symBinAddr: 0xC79C, symSize: 0x174 }
+  - { offset: 0xAFC8C, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV20_copyOrMoveAndResize8capacity12moveElementsySi_SbtFSS_ypTg5', symObjAddr: 0x56E0, symBinAddr: 0xC910, symSize: 0x2B4 }
+  - { offset: 0xAFD92, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV20_copyOrMoveAndResize8capacity12moveElementsySi_SbtFSS_SSTg5', symObjAddr: 0x5994, symBinAddr: 0xCBC4, symSize: 0x2BC }
+  - { offset: 0xAFE8F, size: 0x8, addend: 0x0, symName: '_$ss17_NativeDictionaryV7_delete2atys10_HashTableV6BucketV_tFSS_ypTg5', symObjAddr: 0x5C50, symBinAddr: 0xCE80, symSize: 0x1AC }
+  - { offset: 0xAFF3A, size: 0x8, addend: 0x0, symName: '_$sxq_xq_Iegnnrr_x3key_q_5valuetx_q_tIegnr_SHRzr0_lTRSS_ypTg575$sSD5merge_16uniquingKeysWithySDyxq_Gn_q_q__q_tKXEtKFx_q_tx_q_tcfU_SS_ypTG5Tf3nnpf_n', symObjAddr: 0x5FB8, symBinAddr: 0xD1E8, symSize: 0x38 }
+  - { offset: 0xAFF74, size: 0x8, addend: 0x0, symName: '_$ss15ContiguousArrayV16_createNewBuffer14bufferIsUnique15minimumCapacity13growForAppendySb_SiSbtFSDySSypG_Tg5', symObjAddr: 0x5FF0, symBinAddr: 0xD220, symSize: 0x1C }
+  - { offset: 0xAFF8C, size: 0x8, addend: 0x0, symName: '_$ss15ContiguousArrayV16_createNewBuffer14bufferIsUnique15minimumCapacity13growForAppendySb_SiSbtFSS_Tg5', symObjAddr: 0x600C, symBinAddr: 0xD23C, symSize: 0x24 }
+  - { offset: 0xAFFFC, size: 0x8, addend: 0x0, symName: '_$ss22_ContiguousArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtFSDySSypG_Tg5', symObjAddr: 0x6030, symBinAddr: 0xD260, symSize: 0x130 }
+  - { offset: 0xB0142, size: 0x8, addend: 0x0, symName: '_$ss13_parseInteger5ascii5radixq_Sgx_SitSyRzs010FixedWidthB0R_r0_lFSS_s6UInt64VTg5', symObjAddr: 0x6160, symBinAddr: 0xD390, symSize: 0xF0 }
+  - { offset: 0xB01E8, size: 0x8, addend: 0x0, symName: '_$sSh8_VariantV6insertySb8inserted_x17memberAfterInserttxnFSS_Tg5', symObjAddr: 0x6250, symBinAddr: 0xD480, symSize: 0x14C }
+  - { offset: 0xB02AE, size: 0x8, addend: 0x0, symName: '_$ss10_NativeSetV9insertNew_2at8isUniqueyxn_s10_HashTableV6BucketVSbtFSS_Tg5', symObjAddr: 0x639C, symBinAddr: 0xD5CC, symSize: 0x17C }
+  - { offset: 0xB0376, size: 0x8, addend: 0x0, symName: '_$ss10_NativeSetV4copyyyFSS_Tg5', symObjAddr: 0x6518, symBinAddr: 0xD748, symSize: 0x158 }
+  - { offset: 0xB03FE, size: 0x8, addend: 0x0, symName: '_$ss10_NativeSetV13copyAndResize8capacityySi_tFSS_Tg5', symObjAddr: 0x6670, symBinAddr: 0xD8A0, symSize: 0x234 }
+  - { offset: 0xB04A1, size: 0x8, addend: 0x0, symName: '_$ss10_NativeSetV6resize8capacityySi_tFSS_Tg5', symObjAddr: 0x68A4, symBinAddr: 0xDAD4, symSize: 0x25C }
+  - { offset: 0xB05AB, size: 0x8, addend: 0x0, symName: '_$ss13_parseInteger5ascii5radixq_Sgx_SitSyRzs010FixedWidthB0R_r0_lFADSRys5UInt8VGXEfU_SS_s6UInt64VTg5', symObjAddr: 0x6B00, symBinAddr: 0xDD30, symSize: 0x284 }
+  - { offset: 0xB06C3, size: 0x8, addend: 0x0, symName: '_$sSS8_copyingyS2SFZ', symObjAddr: 0x6D84, symBinAddr: 0xDFB4, symSize: 0x50 }
+  - { offset: 0xB06DB, size: 0x8, addend: 0x0, symName: '_$sSlsEy11SubSequenceQzqd__cSXRd__5BoundQyd__5IndexRtzluigSS_s16PartialRangeFromVySSAEVGTgq5', symObjAddr: 0x6DD4, symBinAddr: 0xE004, symSize: 0x4C }
+  - { offset: 0xB0730, size: 0x8, addend: 0x0, symName: '_$sSS8_copyingySSSsFZ', symObjAddr: 0x6E20, symBinAddr: 0xE050, symSize: 0x144 }
+  - { offset: 0xB078A, size: 0x8, addend: 0x0, symName: '_$ss22_ContiguousArrayBufferV19_uninitializedCount15minimumCapacityAByxGSi_SitcfCs5UInt8V_Tt1gq5', symObjAddr: 0x6F64, symBinAddr: 0xE194, symSize: 0x70 }
+  - { offset: 0xB07C2, size: 0x8, addend: 0x0, symName: '_$sSTsE21_copySequenceContents12initializing8IteratorQz_SitSry7ElementQzG_tFSs8UTF8ViewV_Tgq5', symObjAddr: 0x6FD4, symBinAddr: 0xE204, symSize: 0x21C }
+  - { offset: 0xB080F, size: 0x8, addend: 0x0, symName: '_$ss11_StringGutsV27_slowEnsureMatchingEncodingySS5IndexVAEF', symObjAddr: 0x71F0, symBinAddr: 0xE420, symSize: 0x78 }
+  - { offset: 0xB08ED, size: 0x8, addend: 0x0, symName: '_$sSa6append10contentsOfyqd__n_t7ElementQyd__RszSTRd__lFSS_SaySSGTg5', symObjAddr: 0x7268, symBinAddr: 0xE498, symSize: 0xF8 }
+  - { offset: 0xB0C52, size: 0x8, addend: 0x0, symName: '_$sSa6append10contentsOfyqd__n_t7ElementQyd__RszSTRd__lFSDyS2SG_SayAEGTg5', symObjAddr: 0x7360, symBinAddr: 0xE590, symSize: 0x100 }
+  - { offset: 0xB0F12, size: 0x8, addend: 0x0, symName: '_$ss12_ArrayBufferV20_consumeAndCreateNew14bufferIsUnique15minimumCapacity13growForAppendAByxGSb_SiSbtFSDyS2SG_Tg5', symObjAddr: 0x7574, symBinAddr: 0xE7A4, symSize: 0x130 }
+  - { offset: 0xB1055, size: 0x8, addend: 0x0, symName: '_$ss15LazyMapSequenceV8IteratorV4nextq_SgyFSDySSypG_SS_yptTg5', symObjAddr: 0x76A4, symBinAddr: 0xE8D4, symSize: 0x188 }
+  - { offset: 0xB140C, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC9removeTag33_491F737C4EFC5E801AEAEA4C4751A42DLL3key6resultySSSg_yypSgctFySo0C5ScopeCcfU_TA', symObjAddr: 0xF794, symBinAddr: 0x16980, symSize: 0x24 }
+  - { offset: 0xB1420, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC11removeExtra33_491F737C4EFC5E801AEAEA4C4751A42DLL3key6resultySSSg_yypSgctFySo0C5ScopeCcfU_TA', symObjAddr: 0xF7B8, symBinAddr: 0x169A4, symSize: 0x24 }
+  - { offset: 0xB1434, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC14removeContexts33_491F737C4EFC5E801AEAEA4C4751A42DLL3key6resultySSSg_yypSgctFySo0C5ScopeCcfU_TA', symObjAddr: 0xF7E0, symBinAddr: 0x169CC, symSize: 0x24 }
+  - { offset: 0xB1448, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC12loadContexts33_491F737C4EFC5E801AEAEA4C4751A42DLL6resultyyypSgc_tFySo0C5ScopeCcfU_TA', symObjAddr: 0xF828, symBinAddr: 0x16A14, symSize: 0x8 }
+  - { offset: 0xB145C, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginCMa', symObjAddr: 0xF830, symBinAddr: 0x16A1C, symSize: 0x20 }
+  - { offset: 0xB1470, size: 0x8, addend: 0x0, symName: ___swift_destroy_boxed_opaque_existential_0, symObjAddr: 0xF89C, symBinAddr: 0x16A3C, symSize: 0x20 }
+  - { offset: 0xB1484, size: 0x8, addend: 0x0, symName: '_$syXlSgIeyBy_ypSgIegn_TRTA', symObjAddr: 0xF8E0, symBinAddr: 0x16A80, symSize: 0x8 }
+  - { offset: 0xB1498, size: 0x8, addend: 0x0, symName: ___swift_project_boxed_opaque_existential_0, symObjAddr: 0xF8E8, symBinAddr: 0x16A88, symSize: 0x24 }
+  - { offset: 0xB14AC, size: 0x8, addend: 0x0, symName: '_$sS2SSysWl', symObjAddr: 0xF99C, symBinAddr: 0x16B3C, symSize: 0x40 }
+  - { offset: 0xB14C0, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13initNativeSdk33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctFySo0C7OptionsCcfU_TA', symObjAddr: 0xF9E0, symBinAddr: 0x16B80, symSize: 0x8 }
+  - { offset: 0xB14D4, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13initNativeSdk33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctFySo0C7OptionsCcfU_So0C5EventCSgAMcfU_TA', symObjAddr: 0xF9E8, symBinAddr: 0x16B88, symSize: 0x2C }
+  - { offset: 0xB14FD, size: 0x8, addend: 0x0, symName: _block_copy_helper, symObjAddr: 0xFA14, symBinAddr: 0x16BB4, symSize: 0x10 }
+  - { offset: 0xB1511, size: 0x8, addend: 0x0, symName: _block_destroy_helper, symObjAddr: 0xFA24, symBinAddr: 0x16BC4, symSize: 0x8 }
+  - { offset: 0xB1525, size: 0x8, addend: 0x0, symName: '_$sSo11SentryEventCABSgIeghgo_SgWOy', symObjAddr: 0xFA2C, symBinAddr: 0x16BCC, symSize: 0x10 }
+  - { offset: 0xB155A, size: 0x8, addend: 0x0, symName: '_$s10Foundation4DataV15_RepresentationOWOe', symObjAddr: 0x1050C, symBinAddr: 0x176AC, symSize: 0x40 }
+  - { offset: 0xB156E, size: 0x8, addend: 0x0, symName: '_$ss11AnyHashableVWOc', symObjAddr: 0x1055C, symBinAddr: 0x176FC, symSize: 0x3C }
+  - { offset: 0xB1582, size: 0x8, addend: 0x0, symName: '_$sSD8IteratorV8_VariantOySSyp__GWOe', symObjAddr: 0x105EC, symBinAddr: 0x1778C, symSize: 0x8 }
+  - { offset: 0xB15CA, size: 0x8, addend: 0x0, symName: '_$sSDyq_SgxcisSS_ypTg5', symObjAddr: 0x0, symBinAddr: 0x7230, symSize: 0xCC }
+  - { offset: 0xB164A, size: 0x8, addend: 0x0, symName: '_$ss17_dictionaryUpCastySDyq0_q1_GSDyxq_GSHRzSHR0_r2_lFSS_yps11AnyHashableVypTg5', symObjAddr: 0xCC, symBinAddr: 0x72FC, symSize: 0x2D0 }
+  - { offset: 0xB18AF, size: 0x8, addend: 0x0, symName: '_$ss30_dictionaryDownCastConditionalySDyq0_q1_GSgSDyxq_GSHRzSHR0_r2_lFs11AnyHashableV_ypSSypTg5', symObjAddr: 0x30BC, symBinAddr: 0xA2EC, symSize: 0x2D8 }
+  - { offset: 0xB1B17, size: 0x8, addend: 0x0, symName: '_$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfCSS_ypTt0g5Tf4g_n', symObjAddr: 0x782C, symBinAddr: 0xEA5C, symSize: 0x12C }
+  - { offset: 0xB1C2A, size: 0x8, addend: 0x0, symName: '_$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfCSS_ypSgTt0g5Tf4g_n', symObjAddr: 0x7958, symBinAddr: 0xEB88, symSize: 0x12C }
+  - { offset: 0xB1D43, size: 0x8, addend: 0x0, symName: '_$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfCSS_So8NSNumberCTt0g5Tf4g_n', symObjAddr: 0x7A84, symBinAddr: 0xECB4, symSize: 0x104 }
+  - { offset: 0xB1E66, size: 0x8, addend: 0x0, symName: '_$sSD17dictionaryLiteralSDyxq_Gx_q_td_tcfCSS_SSTt0g5Tf4g_n', symObjAddr: 0x7B88, symBinAddr: 0xEDB8, symSize: 0x110 }
+  - { offset: 0xB2295, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC8register4withySo0dE9Registrar_p_tFZ', symObjAddr: 0x39C, symBinAddr: 0x75CC, symSize: 0x4 }
+  - { offset: 0xB22B6, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC8register4withySo0dE9Registrar_p_tFZTo', symObjAddr: 0x3A0, symBinAddr: 0x75D0, symSize: 0x30 }
+  - { offset: 0xB22E7, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC0aD033_491F737C4EFC5E801AEAEA4C4751A42DLLAA0cD0Cvg', symObjAddr: 0x3D0, symBinAddr: 0x7600, symSize: 0x60 }
+  - { offset: 0xB2517, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC6handle_6resultySo0D10MethodCallC_yypSgctF', symObjAddr: 0x430, symBinAddr: 0x7660, symSize: 0x1A58 }
+  - { offset: 0xB2E02, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC6handle_6resultySo0D10MethodCallC_yypSgctFTo', symObjAddr: 0x1E88, symBinAddr: 0x90B8, symSize: 0x7C }
+  - { offset: 0xB2EF1, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC12loadContexts33_491F737C4EFC5E801AEAEA4C4751A42DLL6resultyyypSgc_tFySo0C5ScopeCcfU_', symObjAddr: 0x1FF4, symBinAddr: 0x9224, symSize: 0x10C8 }
+  - { offset: 0xB3C04, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13initNativeSdk33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctF', symObjAddr: 0x3394, symBinAddr: 0xA5C4, symSize: 0x3E4 }
+  - { offset: 0xB3D31, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13initNativeSdk33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctFySo0C7OptionsCcfU_', symObjAddr: 0x3778, symBinAddr: 0xA9A8, symSize: 0x2D8 }
+  - { offset: 0xB3E15, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13initNativeSdk33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctFySo0C7OptionsCcfU_So0C5EventCSgAMcfU_Tf4ndn_g', symObjAddr: 0x100E8, symBinAddr: 0x17288, symSize: 0x424 }
+  - { offset: 0xB4199, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC15configureReplay33_491F737C4EFC5E801AEAEA4C4751A42DLLyySDySSypGF', symObjAddr: 0x3AA8, symBinAddr: 0xACD8, symSize: 0x738 }
+  - { offset: 0xB4539, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC8TimeSpanV8addToMapyySDySSypGzF', symObjAddr: 0x41E0, symBinAddr: 0xB410, symSize: 0x138 }
+  - { offset: 0xB463E, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC11setContexts33_491F737C4EFC5E801AEAEA4C4751A42DLL3key5value6resultySSSg_ypSgyAJctFySo0C5ScopeCcfU_', symObjAddr: 0x4318, symBinAddr: 0xB548, symSize: 0x55C }
+  - { offset: 0xB493A, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC8setExtra33_491F737C4EFC5E801AEAEA4C4751A42DLL3key5value6resultySSSg_ypSgyAJctFySo0C5ScopeCcfU_', symObjAddr: 0x4874, symBinAddr: 0xBAA4, symSize: 0x16C }
+  - { offset: 0xB4993, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC6setTag33_491F737C4EFC5E801AEAEA4C4751A42DLL3key5value6resultySSSg_AIyypSgctFySo0C5ScopeCcfU_', symObjAddr: 0x4A7C, symBinAddr: 0xBCAC, symSize: 0xC0 }
+  - { offset: 0xB4A7C, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC18displayRefreshRate33_491F737C4EFC5E801AEAEA4C4751A42DLLyyyypSgcF', symObjAddr: 0x4B3C, symBinAddr: 0xBD6C, symSize: 0x2AC }
+  - { offset: 0xB4C20, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13onDisplayLink33_491F737C4EFC5E801AEAEA4C4751A42DLLyySo09CADisplayH0CFTo', symObjAddr: 0x4DE8, symBinAddr: 0xC018, symSize: 0x4 }
+  - { offset: 0xB4C34, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginCACycfC', symObjAddr: 0x4DEC, symBinAddr: 0xC01C, symSize: 0x20 }
+  - { offset: 0xB4C48, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginCACycfc', symObjAddr: 0x4E0C, symBinAddr: 0xC03C, symSize: 0x2C }
+  - { offset: 0xB4CA1, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginCACycfcTo', symObjAddr: 0x4E38, symBinAddr: 0xC068, symSize: 0x2C }
+  - { offset: 0xB4D00, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginCfD', symObjAddr: 0x4E64, symBinAddr: 0xC094, symSize: 0x30 }
+  - { offset: 0xB4DC5, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC8register4withySo0dE9Registrar_p_tFZTf4nd_n', symObjAddr: 0x7C98, symBinAddr: 0xEEC8, symSize: 0x1F8 }
+  - { offset: 0xB4EC1, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13loadImageList33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctF015$syXlSgIeyBy_ypU7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4ndg_n', symObjAddr: 0x7ED4, symBinAddr: 0xF0C0, symSize: 0xA08 }
+  - { offset: 0xB5604, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13initNativeSdk33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctF015$syXlSgIeyBy_ypU7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4nng_n', symObjAddr: 0x88DC, symBinAddr: 0xFAC8, symSize: 0x490 }
+  - { offset: 0xB5735, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC15captureEnvelope33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctF015$syXlSgIeyBy_ypT7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4ndg_n', symObjAddr: 0x8D6C, symBinAddr: 0xFF58, symSize: 0x7A4 }
+  - { offset: 0xB5A0A, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC19fetchNativeAppStart33_491F737C4EFC5E801AEAEA4C4751A42DLL6resultyyypSgc_tF015$syXlSgIeyBy_ypT7Iegn_TRyXlSgIeyBy_Tf1cn_nTf4dg_n', symObjAddr: 0x9510, symBinAddr: 0x106FC, symSize: 0x87C }
+  - { offset: 0xB5F8F, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC7setUser33_491F737C4EFC5E801AEAEA4C4751A42DLL4user6resultySDySSypGSg_yypSgctF015$syXlSgIeyBy_ypS7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4ndg_n', symObjAddr: 0x9D8C, symBinAddr: 0x10F78, symSize: 0x1E0 }
+  - { offset: 0xB5FFB, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13addBreadcrumb33_491F737C4EFC5E801AEAEA4C4751A42DLL10breadcrumb6resultySDySSypGSg_yypSgctF015$syXlSgIeyBy_ypS7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4ndg_n', symObjAddr: 0x9F6C, symBinAddr: 0x11158, symSize: 0x1B4 }
+  - { offset: 0xB606D, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC6setTag33_491F737C4EFC5E801AEAEA4C4751A42DLL3key5value6resultySSSg_AIyypSgctF015$syXlSgIeyBy_ypT7Iegn_TRyXlSgIeyBy_Tf1nncn_nTf4nndg_n', symObjAddr: 0xA320, symBinAddr: 0x1150C, symSize: 0x208 }
+  - { offset: 0xB6153, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC15discardProfiler33_491F737C4EFC5E801AEAEA4C4751A42DLLyySo0D10MethodCallC_yypSgctF015$syXlSgIeyBy_ypS7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4ndg_n', symObjAddr: 0xA528, symBinAddr: 0x11714, symSize: 0x390 }
+  - { offset: 0xB623C, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC14collectProfile33_491F737C4EFC5E801AEAEA4C4751A42DLLyySo0D10MethodCallC_yypSgctF015$syXlSgIeyBy_ypS7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4ndg_n', symObjAddr: 0xA8B8, symBinAddr: 0x11AA4, symSize: 0x924 }
+  - { offset: 0xB64FA, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC18displayRefreshRate33_491F737C4EFC5E801AEAEA4C4751A42DLLyyyypSgcF015$syXlSgIeyBy_ypR7Iegn_TRyXlSgIeyBy_Tf1cn_nTf4ng_n', symObjAddr: 0xB1DC, symBinAddr: 0x123C8, symSize: 0x424 }
+  - { offset: 0xB670B, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC6handle_6resultySo0D10MethodCallC_yypSgctF015$syXlSgIeyBy_ypL7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4nng_n', symObjAddr: 0xB600, symBinAddr: 0x127EC, symSize: 0x1CBC }
+  - { offset: 0xB6FB2, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13loadImageList33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctFTf4nnd_n', symObjAddr: 0xD2BC, symBinAddr: 0x144A8, symSize: 0x934 }
+  - { offset: 0xB76EF, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC15captureEnvelope33_491F737C4EFC5E801AEAEA4C4751A42DLL_6resultySo0D10MethodCallC_yypSgctFTf4nnd_n', symObjAddr: 0xDBF0, symBinAddr: 0x14DDC, symSize: 0x588 }
+  - { offset: 0xB792A, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC19fetchNativeAppStart33_491F737C4EFC5E801AEAEA4C4751A42DLL6resultyyypSgc_tFTf4nd_n', symObjAddr: 0xE178, symBinAddr: 0x15364, symSize: 0x728 }
+  - { offset: 0xB7EA4, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC7setUser33_491F737C4EFC5E801AEAEA4C4751A42DLL4user6resultySDySSypGSg_yypSgctFTf4nnd_n', symObjAddr: 0xE8A0, symBinAddr: 0x15A8C, symSize: 0x130 }
+  - { offset: 0xB7F0B, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC13addBreadcrumb33_491F737C4EFC5E801AEAEA4C4751A42DLL10breadcrumb6resultySDySSypGSg_yypSgctFTf4nnd_n', symObjAddr: 0xE9D0, symBinAddr: 0x15BBC, symSize: 0x104 }
+  - { offset: 0xB7F78, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC6setTag33_491F737C4EFC5E801AEAEA4C4751A42DLL3key5value6resultySSSg_AIyypSgctFTf4nnnd_n', symObjAddr: 0xEBD8, symBinAddr: 0x15DC4, symSize: 0x108 }
+  - { offset: 0xB7FF0, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC15discardProfiler33_491F737C4EFC5E801AEAEA4C4751A42DLLyySo0D10MethodCallC_yypSgctFTf4nnd_n', symObjAddr: 0xECE0, symBinAddr: 0x15ECC, symSize: 0x2E8 }
+  - { offset: 0xB80D6, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC14collectProfile33_491F737C4EFC5E801AEAEA4C4751A42DLLyySo0D10MethodCallC_yypSgctFTf4nnd_n', symObjAddr: 0xEFC8, symBinAddr: 0x161B4, symSize: 0x7C8 }
+  - { offset: 0xB838B, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC22setEventEnvironmentTag33_491F737C4EFC5E801AEAEA4C4751A42DLL5event6origin11environmentySo0cG0C_S2StFTf4nnnd_n', symObjAddr: 0xFC78, symBinAddr: 0x16E18, symSize: 0x240 }
+  - { offset: 0xB84A1, size: 0x8, addend: 0x0, symName: '_$s14sentry_flutter19SentryFlutterPluginC17setEventOriginTag33_491F737C4EFC5E801AEAEA4C4751A42DLL5eventySo0cG0C_tFTf4nd_n', symObjAddr: 0xFEB8, symBinAddr: 0x17058, symSize: 0x230 }
+...

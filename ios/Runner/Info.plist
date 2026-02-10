@@ -47,7 +47,5 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs your location to find nearby restaurants and help with table reservations.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs your location to find nearby restaurants and help with table reservations.</string>
 </dict>
 </plist>
