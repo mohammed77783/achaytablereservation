@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:achaytablereservation/core/services/storage_service.dart';
 import 'package:achaytablereservation/core/errors/error_handler.dart';
+import 'package:achaytablereservation/features/authentication/logic/authstate_Controller.dart';
+import 'package:achaytablereservation/core/shared/widgets/login_required_dialog.dart';
 
 /// Main navigation controller managing bottom navigation bar state
 /// Handles page switching, state persistence, and navigation index management
@@ -43,6 +45,15 @@ class MainNavigationController extends GetxController {
         currentIndex.value = 0;
         _saveNavigationState();
         return;
+      }
+
+      // Block guests from accessing Bookings tab (index 1)
+      if (index == 1) {
+        final authController = Get.find<AuthStateController>();
+        if (authController.isGuest) {
+          LoginRequiredDialog.show();
+          return;
+        }
       }
 
       // Update current index

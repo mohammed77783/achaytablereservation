@@ -81,9 +81,17 @@ class OtpPage extends StatelessWidget {
     if (event == null) return;
     _controller.resetNavigationEvent();
 
+    // Check for returnRoute passed through login flow
+    final args = Get.arguments;
+    final returnRoute = args is Map ? args['returnRoute'] as String? : null;
+    final returnArguments = args is Map ? args['returnArguments'] : null;
+
     switch (event) {
       case OtpNavigationEvent.navigateToHome:
         Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
+        if (returnRoute != null) {
+          Get.toNamed(returnRoute, arguments: returnArguments);
+        }
         break;
       case OtpNavigationEvent.navigateToResetPassword:
         // Navigate to reset password after local OTP verification

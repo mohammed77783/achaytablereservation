@@ -812,6 +812,7 @@ class AuthStateController extends GetxController {
   String get authenticationError => authError.value;
   bool get hasAuthError => authError.value.isNotEmpty;
   bool get isUserProfileComplete => isProfileComplete.value;
+  bool get isGuest => !isAuthenticated.value;
   // ==================== Public Utility Methods ====================
 
   /// Force refresh of authentication state

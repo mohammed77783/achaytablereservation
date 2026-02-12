@@ -386,6 +386,11 @@ class _LoginPageState extends State<LoginPage> {
     if (event == null) return;
     controller.resetNavigationEvent();
 
+    // Get returnRoute from page arguments (passed by LoginRequiredDialog)
+    final args = Get.arguments;
+    final returnRoute = args is Map ? args['returnRoute'] as String? : null;
+    final returnArguments = args is Map ? args['returnArguments'] : null;
+
     switch (event) {
       case LoginNavigationEvent.navigateToOtp:
         Get.toNamed(
@@ -393,11 +398,19 @@ class _LoginPageState extends State<LoginPage> {
           arguments: {
             'phoneNumber': _phoneController.text.trim(),
             'flow': 'login',
+            'returnRoute': returnRoute,
+            'returnArguments': returnArguments,
           },
         );
         break;
       case LoginNavigationEvent.navigateToHome:
-        Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
+        if (returnRoute != null) {
+          // Return to where the user was before the login prompt
+          Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
+          Get.toNamed(returnRoute, arguments: returnArguments);
+        } else {
+          Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
+        }
         break;
     }
   }

@@ -545,4 +545,10 @@ const Map<String, String> arSA = {
   'support_phone': '+966500000000',
   'support_email': 'support@aja.com',
   'logout_success': 'تم تسجيل الخروج بنجاح',
+
+  // ==================== Guest Mode ====================
+  'login_required': 'يجب تسجيل الدخول',
+  'login_required_message': 'يرجى تسجيل الدخول أو إنشاء حساب للمتابعة.',
+  'continue_as_guest': 'المتابعة كزائر',
+  'guest': 'زائر',
 };

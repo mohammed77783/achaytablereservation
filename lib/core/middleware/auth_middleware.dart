@@ -57,14 +57,17 @@ class Authmiddeleware extends GetMiddleware {
     final currentRoute = route.uri.path;
     final isAuthenticated = authController.isUserAuthenticated;
 
-    // Define protected routes that require authentication
-    final protectedRoutes = [
-      AppRoutes.MAIN_NAVIGATION,
-      AppRoutes.HOME,
+    // Routes that require authentication (guests cannot access)
+    final authRequiredRoutes = [
       AppRoutes.PROFILE,
       AppRoutes.SETTINGS,
       AppRoutes.Dashbordpage,
       AppRoutes.EDIT_PROFILE,
+      AppRoutes.paymentpage,
+      AppRoutes.bookingDetails,
+      AppRoutes.UpdateProfile,
+      AppRoutes.UpdatePassword,
+      AppRoutes.ChangePhone,
     ];
 
     // Define guest-only routes (should redirect to home if authenticated)
@@ -81,8 +84,8 @@ class Authmiddeleware extends GetMiddleware {
         return GetNavConfig.fromRoute(AppRoutes.MAIN_NAVIGATION);
       }
 
-      // If user is not authenticated and trying to access protected pages, redirect to login
-      if (!isAuthenticated && protectedRoutes.contains(currentRoute)) {
+      // If user is not authenticated and trying to access auth-required pages, redirect to login
+      if (!isAuthenticated && authRequiredRoutes.contains(currentRoute)) {
         return GetNavConfig.fromRoute(AppRoutes.LOGIN);
       }
 

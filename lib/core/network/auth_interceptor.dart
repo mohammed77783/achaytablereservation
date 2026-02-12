@@ -309,11 +309,17 @@ class AuthInterceptor {
       },
     );
 
+    // Only redirect to login if the user was previously authenticated
+    // (had stored credentials). Guests should not be force-redirected.
+    final hadCredentials =
+        await _storageService.read<String>(StorageConstants.authToken);
+
     // Clear stored authentication credentials
     await _clearAuthCredentials();
 
-    // Navigate to login page if not already there
-    if (Get.currentRoute != AppRoutes.LOGIN) {
+    // Only force-redirect if user had credentials (was logged in before)
+    if (hadCredentials != null &&
+        Get.currentRoute != AppRoutes.LOGIN) {
       Get.offAllNamed(AppRoutes.LOGIN);
     }
   }

@@ -75,13 +75,8 @@ class SplashScreenController extends GetxController {
 
       initializationStatus.value = 'Navigating...';
 
-      if (_authStateController.isAuthenticated.value) {
-        // User is authenticated, navigate to home
-        await _navigateToHome();
-      } else {
-        // User is not authenticated, navigate to login
-        await _navigateToLogin();
-      }
+      // Always navigate to home (guests can browse without login)
+      await _navigateToHome();
     } catch (e) {
       initializationStatus.value = 'Navigation failed';
       await _handleNavigationError(e);
@@ -99,27 +94,16 @@ class SplashScreenController extends GetxController {
     }
   }
 
-  /// Navigate to login screen with error handling
-  Future<void> _navigateToLogin() async {
-    try {
-      initializationStatus.value = 'Loading login screen...';
-      Get.offAllNamed(AppRoutes.LOGIN);
-    } catch (e) {
-      initializationStatus.value = 'Failed to load login screen';
-      throw NavigationException('Failed to navigate to login: ${e.toString()}');
-    }
-  }
-
   /// Handle navigation-specific errors
   Future<void> _handleNavigationError(dynamic error) async {
     hasError.value = true;
     errorMessage.value = 'Navigation error: ${error.toString()}';
     initializationStatus.value = 'Navigation failed';
 
-    // Fallback navigation to login after a delay
+    // Fallback navigation to home after a delay
     await Future.delayed(const Duration(seconds: 1));
     try {
-      Get.offAllNamed(AppRoutes.LOGIN);
+      Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
     } catch (fallbackError) {
       // If even fallback navigation fails, log the error
       errorMessage.value =
@@ -143,10 +127,10 @@ class SplashScreenController extends GetxController {
       initializationStatus.value = 'Initialization error';
     }
 
-    // Default to login screen on any error after a delay
+    // Default to home screen on any error after a delay
     Future.delayed(const Duration(seconds: 2), () async {
       try {
-        await _navigateToLogin();
+        await _navigateToHome();
       } catch (fallbackError) {
         // If even fallback navigation fails, update error message
         errorMessage.value =
@@ -179,14 +163,8 @@ class SplashScreenController extends GetxController {
   /// Check if navigation is safe to perform
   bool get canNavigate => !isInitializing.value && !hasError.value;
 
-  /// Get the target route based on current authentication status
-  String get targetRoute {
-    if (_authStateController.isAuthenticated.value) {
-      return AppRoutes.MAIN_NAVIGATION;
-    } else {
-      return AppRoutes.LOGIN;
-    }
-  }
+  /// Get the target route (always main navigation, guests can browse)
+  String get targetRoute => AppRoutes.MAIN_NAVIGATION;
 
   /// Force navigation to a specific route (for manual override)
   Future<void> forceNavigateTo(String route) async {

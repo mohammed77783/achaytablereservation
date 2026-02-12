@@ -9,6 +9,8 @@ import 'package:achaytablereservation/features/reservation/data/models/reservati
 import 'package:achaytablereservation/features/reservation/data/repositories/ReservationRepository.dart';
 import 'package:achaytablereservation/features/reservation/logic/class/SelectedTimeSlot.dart';
 import 'package:achaytablereservation/features/reservation/ui/widget/payment_confirmation_dialog.dart';
+import 'package:achaytablereservation/features/authentication/logic/authstate_Controller.dart';
+import 'package:achaytablereservation/core/shared/widgets/login_required_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -331,6 +333,15 @@ class ReservationConfirmationController extends BaseController {
 
   /// Navigate to payment page with total price
   void goToPayment() {
+    // Block guests from proceeding to payment
+    final authController = Get.find<AuthStateController>();
+    if (authController.isGuest) {
+      LoginRequiredDialog.show(
+        // returnRoute: AppRoutes.reservationpageconfirmation,
+      );
+      return;
+    }
+
     if (!isTermsAccepted.value) {
       Get.snackbar(
         isArabic ? 'تنبيه' : 'Notice',

@@ -155,7 +155,7 @@ class BranchCard extends StatelessWidget {
 
               // Gradient overlay
               Container(
-                decoration: BoxDecoration(
+                  decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -165,6 +165,7 @@ class BranchCard extends StatelessWidget {
                           .withValues(alpha: 0.6),
                     ],
                   ),
+                
                 ),
               ),
 

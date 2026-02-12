@@ -1,5 +1,6 @@
 import 'package:achaytablereservation/app/routes/app_routes.dart';
 import 'package:achaytablereservation/core/base/base_controller.dart';
+import 'package:achaytablereservation/features/authentication/logic/authstate_Controller.dart';
 import 'package:achaytablereservation/features/reservation/data/models/my_reservation_item.dart';
 import 'package:achaytablereservation/features/reservation/data/repositories/ReservationRepository.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,11 @@ class BookingsController extends BaseController {
   @override
   void onInit() {
     super.onInit();
-    fetchReservations();
+    // Skip fetching reservations if user is a guest (controller inits via IndexedStack)
+    final authController = Get.find<AuthStateController>();
+    if (!authController.isGuest) {
+      fetchReservations();
+    }
   }
 
   /// Fetch user's reservations from API

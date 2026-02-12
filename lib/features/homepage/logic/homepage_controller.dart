@@ -4,6 +4,8 @@ import 'package:achaytablereservation/features/homepage/data/repositories/homepa
 import 'package:achaytablereservation/features/homepage/data/model/branch_models.dart';
 import 'package:achaytablereservation/core/errors/error_handler.dart';
 import 'package:achaytablereservation/app/routes/app_routes.dart';
+import 'package:achaytablereservation/features/authentication/logic/authstate_Controller.dart';
+import 'package:achaytablereservation/core/shared/widgets/login_required_dialog.dart';
 
 /// Homepage controller managing state and business logic for the homepage
 class HomeController extends GetxController {
@@ -91,6 +93,13 @@ class HomeController extends GetxController {
 
   /// Load user data with proper error handling
   Future<void> loadUserData() async {
+    // Skip API call for guests — no profile data to load
+    final authController = Get.find<AuthStateController>();
+    if (authController.isGuest) {
+      user.value = null;
+      return;
+    }
+
     try {
       isLoadingUser.value = true;
       final result = await _repository.userdata();
@@ -248,8 +257,8 @@ class HomeController extends GetxController {
   void navigateToProfile() {
     try {
       if (user.value == null) {
-        // User not logged in, redirect to login
-        Get.offAllNamed(AppRoutes.LOGIN);
+        // User not logged in, show login dialog
+        LoginRequiredDialog.show(returnRoute: AppRoutes.PROFILE);
         return;
       }
 

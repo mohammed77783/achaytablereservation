@@ -557,4 +557,10 @@ const Map<String, String> enUS = {
   'support_phone': '+966500000000',
   'support_email': 'support@aja.com',
   'logout_success': 'Logged out successfully',
+
+  // ==================== Guest Mode ====================
+  'login_required': 'Login Required',
+  'login_required_message': 'Please login or create an account to continue.',
+  'continue_as_guest': 'Continue as Guest',
+  'guest': 'Guest',
 };

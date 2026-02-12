@@ -8,6 +8,7 @@ import '../../../app/themes/dark_theme.dart';
 import '../../../app/themes/light_theme.dart';
 import '../../../core/base/base_controller.dart';
 import '../../../core/services/storage_service.dart';
+import '../../../features/authentication/logic/authstate_Controller.dart';
 
 /// Controller for More page
 /// Handles support center actions, navigation, and logout functionality
@@ -224,10 +225,9 @@ class MoreController extends BaseController {
     isLoggingOut.value = true;
 
     try {
-      // Clear stored tokens and user data
-      await _storageService.remove('access_token');
-      await _storageService.remove('refresh_token');
-      await _storageService.remove('user_data');
+      // Use AuthStateController to properly clear all auth state
+      final authController = Get.find<AuthStateController>();
+      await authController.logout();
 
       // Show success message
       Get.snackbar(
@@ -238,8 +238,8 @@ class MoreController extends BaseController {
         colorText: Colors.white,
       );
 
-      // Navigate to login screen
-      Get.offAllNamed(AppRoutes.LOGIN);
+      // Navigate to home screen (as guest)
+      Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
     } catch (e) {
       showError('error'.tr);
     } finally {

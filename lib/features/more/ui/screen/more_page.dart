@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../app/routes/app_routes.dart';
 import '../../../../app/themes/light_theme.dart';
 import '../../../../app/themes/dark_theme.dart';
+import '../../../../features/authentication/logic/authstate_Controller.dart';
 import '../../logic/more_controller.dart';
 
 /// More page with additional features and settings
@@ -59,8 +61,8 @@ class MorePage extends GetView<MoreController> {
 
             const SizedBox(height: 24),
 
-            // Logout Section
-            _buildLogoutButton(context, isDark),
+            // Login/Logout Section
+            _buildAuthButton(context, isDark),
           ],
         ),
       ),
@@ -289,9 +291,13 @@ class MorePage extends GetView<MoreController> {
     );
   }
 
-  Widget _buildLogoutButton(BuildContext context, bool isDark) {
-    return Obx(
-      () => Container(
+  Widget _buildAuthButton(BuildContext context, bool isDark) {
+    final authController = Get.find<AuthStateController>();
+
+    return Obx(() {
+      final isGuest = authController.isGuest;
+
+      return Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: isDark ? DarkTheme.surfaceColor : LightTheme.surfaceColor,
@@ -309,51 +315,69 @@ class MorePage extends GetView<MoreController> {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: controller.isLoggingOut.value
-                ? null
-                : () => controller.showLogoutConfirmation(),
+            onTap: isGuest
+                ? () => Get.toNamed(AppRoutes.LOGIN)
+                : (controller.isLoggingOut.value
+                    ? null
+                    : () => controller.showLogoutConfirmation()),
             borderRadius: BorderRadius.circular(16),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               child: Row(
                 children: [
-                  // Logout Icon
                   Container(
                     width: 44,
                     height: 44,
                     decoration: BoxDecoration(
-                      color: Colors.red.withOpacity(0.1),
+                      color: isGuest
+                          ? (isDark
+                                  ? DarkTheme.primaryColor
+                                  : LightTheme.primaryColor)
+                              .withOpacity(0.1)
+                          : Colors.red.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: controller.isLoggingOut.value
-                        ? const Center(
-                            child: SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.red,
-                                ),
-                              ),
-                            ),
-                          )
-                        : const Icon(
-                            Icons.logout_outlined,
-                            color: Colors.red,
+                    child: isGuest
+                        ? Icon(
+                            Icons.login_outlined,
+                            color: isDark
+                                ? DarkTheme.primaryColor
+                                : LightTheme.primaryColor,
                             size: 22,
-                          ),
+                          )
+                        : controller.isLoggingOut.value
+                            ? const Center(
+                                child: SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    valueColor:
+                                        AlwaysStoppedAnimation<Color>(
+                                      Colors.red,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : const Icon(
+                                Icons.logout_outlined,
+                                color: Colors.red,
+                                size: 22,
+                              ),
                   ),
                   const SizedBox(width: 14),
-
-                  // Logout Text
                   Text(
-                    'logout'.tr,
-                    style: const TextStyle(
+                    isGuest ? 'login'.tr : 'logout'.tr,
+                    style: TextStyle(
                       fontFamily: 'Cairo',
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
-                      color: Colors.red,
+                      color: isGuest
+                          ? (isDark
+                              ? DarkTheme.primaryColor
+                              : LightTheme.primaryColor)
+                          : Colors.red,
                     ),
                   ),
                 ],
@@ -361,7 +385,7 @@ class MorePage extends GetView<MoreController> {
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

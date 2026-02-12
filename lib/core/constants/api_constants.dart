@@ -26,8 +26,7 @@ class ApiConstants {
   static const String businessHours = '${Restaurant}/business-hours';
   static const String policies = '${Restaurant}/policies';
   // Reservation endpoints
-  static const String checkTableAvailability =
-      '${Reservation}/check-availability';
+  static const String checkTableAvailability = '${Reservation}/check-availability';
   static const String createReservation = '${Reservation}/create';
   static const String confirmReservation = '${Reservation}/confirm';
   static const String myReservations = '${Reservation}/my-reservations';

@@ -1,5 +1,6 @@
 import 'package:achaytablereservation/app/routes/app_routes.dart';
 import 'package:achaytablereservation/core/constants/app_constants.dart';
+import 'package:achaytablereservation/features/authentication/logic/authstate_Controller.dart';
 import 'package:achaytablereservation/features/profile/data/model/profile_model.dart';
 import 'package:achaytablereservation/features/profile/data/repositories/profile_repository.dart';
 import 'package:get/get.dart';
@@ -56,13 +57,12 @@ class ProfileController extends BaseController {
     isLoggingOut.value = true;
 
     try {
-      // Clear stored tokens and user data
-      await _storageService.remove('access_token');
-      await _storageService.remove('refresh_token');
-      await _storageService.remove('user_data');
+      // Use AuthStateController to properly clear all auth state
+      final authController = Get.find<AuthStateController>();
+      await authController.logout();
 
-      // Navigate to login screen
-      Get.offAllNamed('/login');
+      // Navigate to home screen (as guest)
+      Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
     } catch (e) {
       showError('فشل في تسجيل الخروج');
     } finally {
