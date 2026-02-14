@@ -22,6 +22,8 @@ class ProfileController extends BaseController {
   // Observable states
   final Rx<ProfileModel?> profile = Rx<ProfileModel?>(null);
   final RxBool isLoggingOut = false.obs;
+  final RxBool isDeletingAccount = false.obs;
+  final RxString deleteAccountError = ''.obs;
 
   @override
   void onInit() {
@@ -68,6 +70,31 @@ class ProfileController extends BaseController {
     } finally {
       isLoggingOut.value = false;
     }
+  }
+
+  /// Delete user account
+  Future<void> deleteAccount(String password) async {
+    isDeletingAccount.value = true;
+    deleteAccountError.value = '';
+
+    final result = await _profileRepository.deleteAccount(password: password);
+
+    result.fold(
+      (failure) {
+        isDeletingAccount.value = false;
+        deleteAccountError.value =
+            failure.message.isNotEmpty ? failure.message : 'فشل في حذف الحساب';
+      },
+      (response) async {
+        isDeletingAccount.value = false;
+        if (response.accountDeleted) {
+          // Clear auth state and navigate to home
+          final authController = Get.find<AuthStateController>();
+          await authController.logout();
+          Get.offAllNamed(AppRoutes.MAIN_NAVIGATION);
+        }
+      },
+    );
   }
 
   /// Navigate to update profile screen

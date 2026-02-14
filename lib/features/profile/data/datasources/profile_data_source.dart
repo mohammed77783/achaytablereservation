@@ -28,6 +28,11 @@ abstract class ProfileDataSource {
   Future<ApiResponse<ProfileModel>> verifyPhoneChange(
     VerifyPhoneChangeRequest request,
   );
+
+  /// Delete user account
+  Future<ApiResponse<DeleteAccountResponse>> deleteAccount(
+    DeleteAccountRequest request,
+  );
 }
 
 /// Implementation of Profile data source using API client
@@ -166,6 +171,35 @@ class ProfileDataSourceImpl implements ProfileDataSource {
         context: 'ProfileDataSourceImpl.verifyPhoneChange',
         additionalData: {
           'newPhoneNumber': request.newPhoneNumber,
+          'error': e.toString(),
+          'timestamp': DateTime.now().toIso8601String(),
+        },
+      );
+      rethrow;
+    }
+  }
+
+  @override
+  Future<ApiResponse<DeleteAccountResponse>> deleteAccount(
+    DeleteAccountRequest request,
+  ) async {
+    try {
+      final response = await _apiClient.delete(
+        ApiConstants.profile,
+        body: request.toJson(),
+      );
+
+      return ApiResponse<DeleteAccountResponse>.fromJson(
+        response as Map<String, dynamic>,
+        (data) =>
+            DeleteAccountResponse.fromJson(data as Map<String, dynamic>),
+      );
+    } catch (e) {
+      ErrorHandler.logError(
+        'Failed to delete account',
+        StackTrace.current,
+        context: 'ProfileDataSourceImpl.deleteAccount',
+        additionalData: {
           'error': e.toString(),
           'timestamp': DateTime.now().toIso8601String(),
         },

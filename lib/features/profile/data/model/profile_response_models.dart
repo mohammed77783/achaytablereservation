@@ -24,6 +24,32 @@ class PasswordUpdateResponse {
   }
 }
 
+/// Response model for account deletion
+class DeleteAccountResponse {
+  final bool accountDeleted;
+
+  DeleteAccountResponse({
+    required this.accountDeleted,
+  });
+
+  factory DeleteAccountResponse.fromJson(Map<String, dynamic> json) {
+    return DeleteAccountResponse(
+      accountDeleted: json['accountDeleted'] as bool,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'accountDeleted': accountDeleted,
+    };
+  }
+
+  @override
+  String toString() {
+    return 'DeleteAccountResponse(accountDeleted: $accountDeleted)';
+  }
+}
+
 /// Response model for phone change request (OTP sent)
 class PhoneChangeOtpResponse {
   final bool requiresOtp;

@@ -98,3 +98,23 @@ class VerifyPhoneChangeRequest {
         'otpCode: $otpCode)';
   }
 }
+
+/// Request model for deleting account
+class DeleteAccountRequest {
+  final String password;
+
+  DeleteAccountRequest({
+    required this.password,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'password': password,
+    };
+  }
+
+  @override
+  String toString() {
+    return 'DeleteAccountRequest(password: ***)';
+  }
+}

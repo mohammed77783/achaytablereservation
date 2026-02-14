@@ -222,6 +222,55 @@ class ProfileRepository {
     }
   }
 
+  /// Deletes user account
+  /// Returns Either<Failure, DeleteAccountResponse> indicating success
+  ///
+  /// Parameters:
+  /// - [password]: User's current password for confirmation
+  Future<Either<Failure, DeleteAccountResponse>> deleteAccount({
+    required String password,
+  }) async {
+    try {
+      final request = DeleteAccountRequest(password: password);
+
+      final response = await _profileDataSource.deleteAccount(request);
+
+      if (response.success && response.data != null) {
+        return Right(response.data!);
+      } else {
+        final errorMessage = response.message.isNotEmpty
+            ? response.message
+            : 'Failed to delete account';
+
+        ErrorHandler.logError(
+          'API returned unsuccessful response',
+          StackTrace.current,
+          context: 'ProfileRepository.deleteAccount',
+          additionalData: {
+            'success': response.success,
+            'message': response.message,
+            'errors': response.errors,
+          },
+        );
+
+        return Left(ServerFailure(errorMessage));
+      }
+    } catch (e) {
+      final failure = ErrorHandler.exceptionToFailure(e as Exception);
+
+      ErrorHandler.logFailure(
+        failure,
+        context: 'ProfileRepository.deleteAccount',
+        additionalData: {
+          'operation': 'deleteAccount',
+          'timestamp': DateTime.now().toIso8601String(),
+        },
+      );
+
+      return Left(failure);
+    }
+  }
+
   /// Verifies phone number change with OTP
   /// Returns Either<Failure, ProfileModel> with updated profile
   ///
