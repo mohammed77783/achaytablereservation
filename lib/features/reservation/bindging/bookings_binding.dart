@@ -17,6 +17,7 @@ class BookingsBinding extends Bindings {
     if (!Get.isRegistered<ReservationDataSource>()) {
       Get.lazyPut<ReservationDataSource>(
         () => ReservationDataSource(apiClient: apiClient),
+        fenix: true,
       );
     }
 
@@ -26,12 +27,14 @@ class BookingsBinding extends Bindings {
         () => ReservationRepository(
           reservationDataSource: Get.find<ReservationDataSource>(),
         ),
+        fenix: true,
       );
     }
 
     // Register BookingsController
     Get.lazyPut<BookingsController>(
       () => BookingsController(repository: Get.find<ReservationRepository>()),
+      fenix: true,
     );
   }
 }
@@ -48,6 +51,7 @@ class BookingDetailBinding extends Bindings {
     if (!Get.isRegistered<ReservationDataSource>()) {
       Get.lazyPut<ReservationDataSource>(
         () => ReservationDataSource(apiClient: apiClient),
+        fenix: true,
       );
     }
 
@@ -57,6 +61,7 @@ class BookingDetailBinding extends Bindings {
         () => ReservationRepository(
           reservationDataSource: Get.find<ReservationDataSource>(),
         ),
+        fenix: true,
       );
     }
 
@@ -65,6 +70,7 @@ class BookingDetailBinding extends Bindings {
       () => BookingDetailController(
         repository: Get.find<ReservationRepository>(),
       ),
+      fenix: true,
     );
   }
 }
