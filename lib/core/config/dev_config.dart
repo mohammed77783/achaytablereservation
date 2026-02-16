@@ -16,7 +16,7 @@ class DevConfig implements EnvironmentConfig {
   @override
   bool get enableAnalytics => false;
   @override
-  String get publishableKey => 'pk_test_SiJyYMve66Myma5vCZfhKrbWhp3ikYd25viRcRGt';
+  String get publishableKey => 'pk_test_hKrvy27vUFcB7PSPQUYMToR8aZDfD4zjto4w1fxE';
   @override
   Map<String, dynamic> get additionalConfig => {
     'timeout': 30000,
