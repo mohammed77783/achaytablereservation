@@ -16,7 +16,7 @@ class ProdConfig implements EnvironmentConfig {
   @override
   bool get enableAnalytics => false;
   @override
-  String get publishableKey => 'pk_live_7nfDAK84rNJtAxuFwXqhyTkxZYpf7Ls4MK88FXhj';
+  String get publishableKey => 'pk_live_MUqXgycb1VpYZyMaDVQ1NCkuPFmwrqtx7d6n2dYC';
   @override
   Map<String, dynamic> get additionalConfig => {
     'timeout': 30000,
@@ -24,7 +24,6 @@ class ProdConfig implements EnvironmentConfig {
     'enableMockData': true,
     'showPerformanceOverlay': false,
   };
-
 
 //pk_live_7nfDAK84rNJtAxuFwXqhyTkxZYpf7Ls4MK88FXhj
 }

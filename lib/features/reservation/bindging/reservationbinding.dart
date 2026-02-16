@@ -12,22 +12,29 @@ class ReservationBinding extends Bindings {
     // Get ApiClient (should already be registered globally)
     final apiClient = Get.find<ApiClient>();
 
-    // Register ReservationDataSource
-    Get.lazyPut<ReservationDataSource>(
-      () => ReservationDataSource(apiClient: apiClient),
-    );
+    // Register ReservationDataSource if not already registered
+    if (!Get.isRegistered<ReservationDataSource>()) {
+      Get.lazyPut<ReservationDataSource>(
+        () => ReservationDataSource(apiClient: apiClient),
+        fenix: true,
+      );
+    }
 
-    // Register ReservationRepository
-    Get.lazyPut<ReservationRepository>(
-      () => ReservationRepository(
-        reservationDataSource: Get.find<ReservationDataSource>(),
-      ),
-    );
+    // Register ReservationRepository if not already registered
+    if (!Get.isRegistered<ReservationRepository>()) {
+      Get.lazyPut<ReservationRepository>(
+        () => ReservationRepository(
+          reservationDataSource: Get.find<ReservationDataSource>(),
+        ),
+        fenix: true,
+      );
+    }
 
     // Register ReservationController
     Get.lazyPut<ReservationController>(
       () =>
           ReservationController(repository: Get.find<ReservationRepository>()),
+      fenix: true,
     );
   }
 }
