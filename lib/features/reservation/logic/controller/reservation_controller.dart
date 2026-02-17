@@ -97,7 +97,7 @@ class ReservationController extends GetxController {
   int get minGuests => 1;
 
   /// Maximum guests (set to a reasonable limit, can be increased if needed)
-  int get maxGuests => 100;
+  int get maxGuests => 250;
 
   // ══════════════════════════════════════════════════════════════════════════
   // COMPUTED PROPERTIES
