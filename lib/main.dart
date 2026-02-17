@@ -183,7 +183,7 @@ class MyApp extends StatelessWidget {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeApp(ProdConfig());
+  await initializeApp(DevConfig());
 
 if(kReleaseMode){
     await SentryFlutter.init((options) {

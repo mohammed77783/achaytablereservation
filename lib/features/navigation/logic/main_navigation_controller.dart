@@ -36,14 +36,14 @@ class MainNavigationController extends GetxController {
     try {
       // Validate index is within bounds
       if (index < 0 || index >= totalPages) {
-        ErrorHandler.logWarning(
-          'Invalid navigation index: $index. Must be between 0 and ${totalPages - 1}',
-          context: 'MainNavigationController.changePage',
-          additionalData: {'attemptedIndex': index},
-        );
+        // ErrorHandler.logWarning(
+        //   'Invalid navigation index: $index. Must be between 0 and ${totalPages - 1}',
+        //   context: 'MainNavigationController.changePage',
+        //   additionalData: {'attemptedIndex': index},
+        // );
         // Default to Home page on invalid index
         currentIndex.value = 0;
-        _saveNavigationState();
+
         return;
       }
 
@@ -59,42 +59,17 @@ class MainNavigationController extends GetxController {
       // Update current index
       currentIndex.value = index;
 
-      // Save state to storage
-      _saveNavigationState();
+ 
 
-      ErrorHandler.logInfo(
-        'Navigation page changed to index $index',
-        context: 'MainNavigationController.changePage',
-        additionalData: {'newIndex': index},
-      );
+    
     } catch (e) {
-      ErrorHandler.logError(
-        'Failed to change navigation page',
-        StackTrace.current,
-        context: 'MainNavigationController.changePage',
-        additionalData: {'index': index, 'error': e.toString()},
-      );
+     
       // Fallback to Home page on error
       currentIndex.value = 0;
     }
   }
 
-  /// Save current navigation state to storage
-  Future<void> _saveNavigationState() async {
-    try {
-      await _storageService.write(_navigationStateKey, currentIndex.value);
-    } catch (e) {
-      ErrorHandler.logError(
-        'Failed to save navigation state',
-        StackTrace.current,
-        context: 'MainNavigationController._saveNavigationState',
-        additionalData: {
-          'currentIndex': currentIndex.value,
-          'error': e.toString(),
-        },
-      );
-    }
-  }
+
 
   /// Restore navigation state from storage
   Future<void> _restoreNavigationState() async {
@@ -102,26 +77,14 @@ class MainNavigationController extends GetxController {
       final savedIndex = await _storageService.read<int>(_navigationStateKey);
       if (savedIndex != null && savedIndex >= 0 && savedIndex < totalPages) {
         currentIndex.value = savedIndex;
-        ErrorHandler.logInfo(
-          'Navigation state restored to index $savedIndex',
-          context: 'MainNavigationController._restoreNavigationState',
-          additionalData: {'restoredIndex': savedIndex},
-        );
+      
       } else {
         // Default to Home page if no valid saved state
         currentIndex.value = 0;
-        ErrorHandler.logInfo(
-          'No valid navigation state found, defaulting to Home',
-          context: 'MainNavigationController._restoreNavigationState',
-        );
+    
       }
     } catch (e) {
-      ErrorHandler.logError(
-        'Failed to restore navigation state',
-        StackTrace.current,
-        context: 'MainNavigationController._restoreNavigationState',
-        additionalData: {'error': e.toString()},
-      );
+
       // Default to Home page on error
       currentIndex.value = 0;
     }
@@ -130,7 +93,7 @@ class MainNavigationController extends GetxController {
   @override
   void onClose() {
     // Save state before controller is disposed
-    _saveNavigationState();
+
     super.onClose();
   }
 }
